@@ -37,7 +37,7 @@ def carregar_precos(ano_inicio: int, ano_fim: int) -> pd.DataFrame:
     return pd.concat(dfs, ignore_index=True)
 
 
-df = carregar_precos(2025, 2025)
+df = carregar_precos(2020, 2025)
 print(f"\nTotal: {len(df):,} linhas | {df.shape[1]} colunas")
 # print(df.head())
 
