@@ -10,8 +10,10 @@ url = "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/
 df = pd.read_csv(url, sep=";", encoding="utf-8", decimal=",")
 
 # 3. Conferir se leu corretamente
-print(df.shape)
-print(df.head())
+# print(df.shape)
+# print(df.head())
+print(df)
+
 
 # # 4. Salvar em Parquet (compressão snappy é o padrão, boa para análise)
 # df.to_parquet("data/precos_2026_s1.parquet", index=False)
