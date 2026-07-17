@@ -3,11 +3,11 @@ import pyarrow
 
 
 def carregar_precos(ano_inicio: int, ano_fim: int) -> pd.DataFrame:
-    dfs = []  # lista que acumula um DataFrame por semestre
+    dfs: list = []  # lista que acumula um DataFrame por semestre
 
     for ano in range(ano_inicio, ano_fim + 1):
         for semestre in (1, 2):
-            url = (
+            url: str = (
                 "https://www.gov.br/anp/pt-br/centrais-de-conteudo/"
                 f"dados-abertos/arquivos/shpc/dsas/ca/ca-{ano}-0{semestre}.zip"
             )
