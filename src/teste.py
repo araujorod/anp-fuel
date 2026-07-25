@@ -1,7 +1,7 @@
 import pandas as pd
 import pyarrow
 
-# 1. Parametros do script
+# 1. Parametros do script teste
 
 ano_inicio = 2025
 ano_fim = 2025
