@@ -1,14 +1,15 @@
 import pandas as pd
-import psycopg2
 import psycopg
-from psycopg2.extras import execute_values
 
-# lê o arquivo Parquet e cria o DataFrame
+# ------------------------------------------------------------------
+# 1. LER O PARQUET
+# ------------------------------------------------------------------
 file = "D:/ESTUDOS/projetos/anp-fuel/data/precos.parquet"
 df = pd.read_parquet(file)
 
-# carregando apenas as colunas desejadas
-
+# ------------------------------------------------------------------
+# 2. SELECIONAR COLUNAS
+# ------------------------------------------------------------------
 colunas = [
     "Revenda",
     "CNPJ da Revenda",
@@ -25,12 +26,12 @@ colunas = [
     "ano_ref",
     "semestre_ref",
 ]
-
 df = df[colunas]
 print("Selecionadas as colunas do dataframe...")
 
-# carregando apenas as colunas desejadas
-
+# ------------------------------------------------------------------
+# 3. RENOMEAR COLUNAS
+# ------------------------------------------------------------------
 df = df.rename(
     columns={
         "Regiao - Sigla": "regiao",
@@ -47,108 +48,99 @@ df = df.rename(
         "Bandeira": "bandeira",
     }
 )
-print("Colunas do dataframde renomeadas...")
+print("Colunas do dataframe renomeadas...")
 
-# Normalizar o CNPJ
-
+# ------------------------------------------------------------------
+# 4. NORMALIZAR E CONVERTER
+# ------------------------------------------------------------------
 df["cnpj"] = df["cnpj"].str.replace(r"\D", "", regex=True)
-
-# Converter campo data coleta para formada Date
-
 df["data_coleta"] = pd.to_datetime(df["data_coleta"], format="%d/%m/%Y")
 print("Colunas normalizadas e convertidas...")
 
-# Verificar colunas invalidas
-
-# print(df.isna().sum())  # quantos nulos por coluna
-# print(
-#     df[df["uf"].isna()]
-# )  # ver as linhas onde uf é nula (com todas as colunas, para entender o padrão)
-
-
-# Elimina as colunas inválidas
-
+# ------------------------------------------------------------------
+# 5. REMOVER LINHAS NULAS
+# ------------------------------------------------------------------
 antes = len(df)
 df = df.dropna(subset=["uf", "bairro", "produto", "data_coleta", "valor_venda"])
 print(f"Removidas {antes - len(df)} linhas nulas...")
 
+print(f"O Dataframe possui {df.shape[0]} linhas e {df.shape[1]} colunas.\n")
 
-# Valida dados únicos
-# valores categóricos devem pertencer a um conjunto conhecido
-
-# print(df["produto"].unique())
-# print(df["uf"].unique())
-# print(df["regiao"].unique())
-
-
-# conferindo a leitura
-
-print(f"O Dataframe possui {df.shape[0]} linhas e {df.shape[1]} Colunas.\n")
-# print(df.dtypes, "\n")  # tipo de cada coluna
-# # print(df.head(5), end="\n\n")
-# print(df)
-
-
-# 2. CONECTAR AO POSTGRES
-
-try:
-    conn = psycopg.connect(
-        host="localhost",
-        port=5432,
-        dbname="anp_fuel",
-        user="postgres",
-        password="123456",
-    )
-    print("✔ CONEXÃO OK:", conn.execute("SELECT version();").fetchone()[0])
-    conn.close()
-except Exception as e:
-    print("✘ ERRO REAL:", e)
-
+# ------------------------------------------------------------------
+# 6. CONECTAR AO POSTGRES (uma conexão só, fechada apenas no final)
+# ------------------------------------------------------------------
+conn = psycopg.connect(
+    host="localhost",
+    port=5432,
+    dbname="anp_fuel",
+    user="postgres",
+    password="123456",
+)
 cur = conn.cursor()
+print("✔ Conectado ao PostgreSQL.")
 
-# CRIAR A TABELA (se ainda não existir)
-
+# ------------------------------------------------------------------
+# 7. CRIAR A TABELA (se ainda não existir)
+# ------------------------------------------------------------------
 cur.execute(
     """
-    CREATE TABLE IF NOT EXISTS anp_fuel (
-        id           SERIAL PRIMARY KEY,
-        # revenda      TEXT,
-        # cnpj         VARCHAR(14),
-        # regiao       VARCHAR(2),
-        # uf           VARCHAR(2),
-        # cidade       TEXT,
-        # produto      TEXT,
-        # data_coleta  DATE,
-        # valor_venda  NUMERIC(10, 3),
-        # bandeira     TEXT
+    CREATE TABLE IF NOT EXISTS precos_combustiveis (
+        id             SERIAL PRIMARY KEY,
+        revenda        TEXT,
+        cnpj           VARCHAR(14),
+        regiao         VARCHAR(2),
+        uf             VARCHAR(2),
+        cidade         TEXT,
+        bairro         TEXT,
+        cep            VARCHAR(10),
+        produto        TEXT,
+        data_coleta    DATE,
+        valor_venda    NUMERIC(10, 3),
+        unidade_medida TEXT,
+        bandeira       TEXT,
+        ano_ref        INTEGER,
+        semestre_ref   INTEGER
     );
-"""
+    """
 )
 
-# # ------------------------------------------------------------------
-# # 4. PREPARAR OS DADOS E INSERIR EM LOTE
-# # ------------------------------------------------------------------
-# colunas = ["revenda", "cnpj", "regiao", "uf", "cidade",
-#            "produto", "data_coleta", "valor_venda", "bandeira"]
+# ------------------------------------------------------------------
+# 8. PREPARAR OS DADOS E INSERIR
+# ------------------------------------------------------------------
+cols_insert = [
+    "revenda",
+    "cnpj",
+    "regiao",
+    "uf",
+    "cidade",
+    "bairro",
+    "cep",
+    "produto",
+    "data_coleta",
+    "valor_venda",
+    "unidade_medida",
+    "bandeira",
+    "ano_ref",
+    "semestre_ref",
+]
+registros = list(df[cols_insert].itertuples(index=False, name=None))
 
-# registros = list(df[colunas].itertuples(index=False, name=None))
+cur.executemany(
+    """
+    INSERT INTO precos_combustiveis
+        (revenda, cnpj, regiao, uf, cidade, bairro, cep,
+         produto, data_coleta, valor_venda, unidade_medida,
+         bandeira, ano_ref, semestre_ref)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """,
+    registros,
+)
 
-# execute_values(
-#     cur,
-#     """
-#     INSERT INTO precos_combustiveis
-#         (revenda, cnpj, regiao, uf, cidade, produto, data_coleta, valor_venda, bandeira)
-#     VALUES %s
-#     """,
-#     registros,
-#     page_size=10_000,
-# )
+# ------------------------------------------------------------------
+# 9. CONFIRMAR E FECHAR
+# ------------------------------------------------------------------
+conn.commit()
+cur.close()
+conn.close()
 
-# # ------------------------------------------------------------------
-# # 5. CONFIRMAR A TRANSAÇÃO E FECHAR
-# # ------------------------------------------------------------------
-# conn.commit()
-# cur.close()
-# conn.close()
-
-# print(f"✔ {len(registros):,} linhas inseridas em precos_combustiveis")
+print(f"✔ {len(registros):,} linhas inseridas em precos_combustiveis")
