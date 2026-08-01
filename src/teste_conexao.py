@@ -4,7 +4,7 @@ try:
     conn = psycopg.connect(
         host="localhost",
         port=5432,
-        dbname="anp_fuel",
+        dbname="postgres",
         user="postgres",
         password="123456",
     )
