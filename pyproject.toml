@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "databricks>=0.2",
+    "dbt-postgres>=1.11.0",
     "pandas>=3.0.3",
     "psycopg2-binary>=2.9.12",
     "psycopg[binary]>=3.3.4",
