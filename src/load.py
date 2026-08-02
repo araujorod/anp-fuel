@@ -32,16 +32,6 @@ DB_CONFIG = {
 # ------------------------------------------------------------------
 RAIZ = Path(__file__).resolve().parent.parent
 ARQUIVO_SILVER = RAIZ / "data" / "silver" / "precos_tratado.parquet"
-
-# ⚠ Para estudo local. Antes de subir ao GitHub, mover para um .env!
-DB_CONFIG = {
-    "host": "localhost",
-    "port": 5432,
-    "dbname": "anp_fuel",
-    "user": "postgres",
-    "password": "123456",
-}
-
 TABELA = "precos_combustiveis"
 
 # ------------------------------------------------------------------

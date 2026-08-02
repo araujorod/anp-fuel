@@ -51,6 +51,7 @@ ANP (gov.br)
 ```
 anp-fuel/
 ├── src/
+│   └── setup_db.py         # Criação do banco de dados (roda 1x)
 │   ├── extract.py          # ANP → Bronze (parquet)
 │   ├── transform.py        # Bronze → Silver (limpeza + validações)
 │   └── load.py             # Silver → PostgreSQL
