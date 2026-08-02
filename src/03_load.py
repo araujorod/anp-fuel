@@ -12,9 +12,20 @@ Execução: python src/load.py (a partir da raiz do projeto)
 """
 
 from pathlib import Path
-
 import pandas as pd
 import psycopg
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # lê o .env da raiz do projeto para as variáveis de ambiente
+
+DB_CONFIG = {
+    "host": os.getenv("DB_HOST"),
+    "port": int(os.getenv("DB_PORT", 5432)),
+    "dbname": os.getenv("DB_NAME"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+}
 
 # ------------------------------------------------------------------
 # 0. CAMINHOS E CONFIGURAÇÃO
