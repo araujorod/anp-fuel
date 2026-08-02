@@ -1563,3 +1563,255 @@ where valor_venda is null
 [0m23:26:24.195419 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E9EB698AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E9EB7A36A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E9EB7A24C0>]}
 [0m23:26:24.195735 [debug] [MainThread]: Flushing usage events
 [0m23:26:24.843141 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:43:12.595601 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F40210830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F3DA891D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F42AA7890>]}
+
+
+============================== 16:43:12.599924 | 0866fda3-ad93-4279-91a6-22a3720ca702 ==============================
+[0m16:43:12.599924 [info ] [MainThread]: Running with dbt=1.12.0
+[0m16:43:12.600530 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\arauj\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'invocation_command': 'dbt docs generate', 'log_path': 'D:\\ESTUDOS\\projetos\\anp-fuel\\dbt\\logs'}
+[0m16:43:12.887214 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0866fda3-ad93-4279-91a6-22a3720ca702', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F42A2A9E0>]}
+[0m16:43:12.935577 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0866fda3-ad93-4279-91a6-22a3720ca702', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F3DA2FF00>]}
+[0m16:43:12.937556 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m16:43:13.271465 [debug] [MainThread]: checksum: a2adc26f75378a8eb99e8d8f91a2a8f9ec58712ce43e4c142f0908dcdb265eb1, vars: {}, profile: anp_fuel, target: dev, version: 1.12.0
+[0m16:43:14.317889 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:43:14.318229 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:43:14.318483 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:43:14.326006 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0866fda3-ad93-4279-91a6-22a3720ca702', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F42FDBD50>]}
+[0m16:43:14.390299 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0866fda3-ad93-4279-91a6-22a3720ca702', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F43058AA0>]}
+[0m16:43:14.390690 [info ] [MainThread]: Found 5 models, 8 data tests, 1 source, 477 macros
+[0m16:43:14.391048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0866fda3-ad93-4279-91a6-22a3720ca702', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F43233BD0>]}
+[0m16:43:14.392646 [info ] [MainThread]: 
+[0m16:43:14.393047 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:43:14.393297 [info ] [MainThread]: 
+[0m16:43:14.393670 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:43:14.396730 [debug] [ThreadPool]: Acquiring new postgres connection 'list_anp_fuel_public'
+[0m16:43:15.563534 [debug] [ThreadPool]: Using postgres connection "list_anp_fuel_public"
+[0m16:43:15.563956 [debug] [ThreadPool]: On list_anp_fuel_public: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "anp_fuel", "target_name": "dev", "connection_name": "list_anp_fuel_public"} */
+select
+      'anp_fuel' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'anp_fuel' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'anp_fuel' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+    union all
+    select distinct
+     'anp_fuel' as database,
+     proname as name,
+     ns.nspname as schema,
+     'function' as type
+    from pg_proc
+     join pg_namespace as ns on pronamespace = ns.oid
+    where ns.nspname ilike 'public'
+  
+[0m16:43:15.564210 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:43:15.769558 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.205 seconds
+[0m16:43:15.770794 [debug] [ThreadPool]: On list_anp_fuel_public: ROLLBACK
+[0m16:43:15.771274 [debug] [ThreadPool]: On list_anp_fuel_public: Close
+[0m16:43:15.775274 [debug] [MainThread]: Using postgres connection "master"
+[0m16:43:15.775596 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "anp_fuel", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:43:15.775922 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:43:15.937291 [debug] [MainThread]: SQL status: SELECT 1 in 0.161 seconds
+[0m16:43:15.938467 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0866fda3-ad93-4279-91a6-22a3720ca702', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F43414C80>]}
+[0m16:43:15.938801 [debug] [MainThread]: On master: ROLLBACK
+[0m16:43:15.939194 [debug] [MainThread]: On master: Close
+[0m16:43:15.945113 [debug] [Thread-1 (]: Began running node model.anp_fuel.stg_precos
+[0m16:43:15.945553 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.anp_fuel.stg_precos'
+[0m16:43:15.945829 [debug] [Thread-1 (]: Began compiling node model.anp_fuel.stg_precos
+[0m16:43:15.950600 [debug] [Thread-1 (]: Writing injected SQL for node "model.anp_fuel.stg_precos"
+[0m16:43:15.951212 [debug] [Thread-1 (]: Began executing node model.anp_fuel.stg_precos
+[0m16:43:15.951738 [debug] [Thread-1 (]: Finished running node model.anp_fuel.stg_precos
+[0m16:43:15.952710 [debug] [Thread-4 (]: Began running node model.anp_fuel.gold_ranking_bandeiras
+[0m16:43:15.953907 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.anp_fuel.gold_ranking_bandeiras'
+[0m16:43:15.954563 [debug] [Thread-4 (]: Began compiling node model.anp_fuel.gold_ranking_bandeiras
+[0m16:43:15.956268 [debug] [Thread-4 (]: Writing injected SQL for node "model.anp_fuel.gold_ranking_bandeiras"
+[0m16:43:15.953104 [debug] [Thread-3 (]: Began running node model.anp_fuel.gold_preco_mensal_uf
+[0m16:43:15.954236 [debug] [Thread-2 (]: Began running node model.anp_fuel.gold_etanol_vs_gasolina
+[0m16:43:15.953490 [debug] [Thread-1 (]: Began running node model.anp_fuel.gold_variacao_mensal
+[0m16:43:15.958119 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.anp_fuel.stg_precos, now model.anp_fuel.gold_variacao_mensal)
+[0m16:43:15.958410 [debug] [Thread-1 (]: Began compiling node model.anp_fuel.gold_variacao_mensal
+[0m16:43:15.956862 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.anp_fuel.gold_preco_mensal_uf'
+[0m16:43:15.958686 [debug] [Thread-4 (]: Began executing node model.anp_fuel.gold_ranking_bandeiras
+[0m16:43:15.957236 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.anp_fuel.gold_etanol_vs_gasolina'
+[0m16:43:15.961130 [debug] [Thread-2 (]: Began compiling node model.anp_fuel.gold_etanol_vs_gasolina
+[0m16:43:15.962458 [debug] [Thread-2 (]: Writing injected SQL for node "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m16:43:15.960867 [debug] [Thread-4 (]: Finished running node model.anp_fuel.gold_ranking_bandeiras
+[0m16:43:15.960059 [debug] [Thread-1 (]: Writing injected SQL for node "model.anp_fuel.gold_variacao_mensal"
+[0m16:43:15.960361 [debug] [Thread-3 (]: Began compiling node model.anp_fuel.gold_preco_mensal_uf
+[0m16:43:15.964392 [debug] [Thread-3 (]: Writing injected SQL for node "model.anp_fuel.gold_preco_mensal_uf"
+[0m16:43:15.962887 [debug] [Thread-4 (]: Began running node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m16:43:15.965167 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.anp_fuel.gold_ranking_bandeiras, now test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999)
+[0m16:43:15.965518 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m16:43:15.984069 [debug] [Thread-1 (]: Began executing node model.anp_fuel.gold_variacao_mensal
+[0m16:43:15.964839 [debug] [Thread-2 (]: Began executing node model.anp_fuel.gold_etanol_vs_gasolina
+[0m16:43:15.984665 [debug] [Thread-1 (]: Finished running node model.anp_fuel.gold_variacao_mensal
+[0m16:43:15.991850 [debug] [Thread-1 (]: Began running node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m16:43:15.992503 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.anp_fuel.gold_variacao_mensal, now test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6)
+[0m16:43:15.990926 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999"
+[0m16:43:15.992241 [debug] [Thread-3 (]: Began executing node model.anp_fuel.gold_preco_mensal_uf
+[0m16:43:15.993341 [debug] [Thread-3 (]: Finished running node model.anp_fuel.gold_preco_mensal_uf
+[0m16:43:15.991478 [debug] [Thread-2 (]: Finished running node model.anp_fuel.gold_etanol_vs_gasolina
+[0m16:43:15.994358 [debug] [Thread-2 (]: Began running node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m16:43:15.992742 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m16:43:15.994054 [debug] [Thread-4 (]: Began executing node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m16:43:15.994616 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.anp_fuel.gold_etanol_vs_gasolina, now test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd)
+[0m16:43:15.993598 [debug] [Thread-3 (]: Began running node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m16:43:16.003183 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.anp_fuel.gold_preco_mensal_uf, now test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13)
+[0m16:43:16.003409 [debug] [Thread-3 (]: Began compiling node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m16:43:16.007309 [debug] [Thread-3 (]: Writing injected SQL for node "test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13"
+[0m16:43:16.002628 [debug] [Thread-4 (]: Finished running node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m16:43:16.002170 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6"
+[0m16:43:16.007728 [debug] [Thread-4 (]: Began running node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m16:43:16.002920 [debug] [Thread-2 (]: Began compiling node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m16:43:16.012961 [debug] [Thread-2 (]: Writing injected SQL for node "test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd"
+[0m16:43:16.008525 [debug] [Thread-3 (]: Began executing node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m16:43:16.008238 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999, now test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b)
+[0m16:43:16.014093 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m16:43:16.018062 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b"
+[0m16:43:16.013313 [debug] [Thread-1 (]: Began executing node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m16:43:16.013790 [debug] [Thread-3 (]: Finished running node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m16:43:16.019188 [debug] [Thread-3 (]: Began running node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m16:43:16.019436 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13, now test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b)
+[0m16:43:16.019742 [debug] [Thread-3 (]: Began compiling node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m16:43:16.018706 [debug] [Thread-1 (]: Finished running node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m16:43:16.023966 [debug] [Thread-1 (]: Began running node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m16:43:16.018932 [debug] [Thread-2 (]: Began executing node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m16:43:16.024964 [debug] [Thread-2 (]: Finished running node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m16:43:16.023626 [debug] [Thread-3 (]: Writing injected SQL for node "test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b"
+[0m16:43:16.024526 [debug] [Thread-4 (]: Began executing node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m16:43:16.026343 [debug] [Thread-4 (]: Finished running node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m16:43:16.024297 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6, now test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a)
+[0m16:43:16.025237 [debug] [Thread-2 (]: Began running node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m16:43:16.027051 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd, now test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25)
+[0m16:43:16.027333 [debug] [Thread-2 (]: Began compiling node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m16:43:16.031468 [debug] [Thread-2 (]: Writing injected SQL for node "test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25"
+[0m16:43:16.026699 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m16:43:16.027586 [debug] [Thread-3 (]: Began executing node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m16:43:16.036396 [debug] [Thread-3 (]: Finished running node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m16:43:16.035912 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a"
+[0m16:43:16.036832 [debug] [Thread-2 (]: Began executing node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m16:43:16.037313 [debug] [Thread-2 (]: Finished running node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m16:43:16.037673 [debug] [Thread-1 (]: Began executing node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m16:43:16.038957 [debug] [Thread-1 (]: Finished running node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m16:43:16.040014 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:43:16.040218 [debug] [MainThread]: Connection 'list_anp_fuel_public' was properly closed.
+[0m16:43:16.040391 [debug] [MainThread]: Connection 'test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a' was properly closed.
+[0m16:43:16.040557 [debug] [MainThread]: Connection 'test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b' was properly closed.
+[0m16:43:16.040720 [debug] [MainThread]: Connection 'test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b' was properly closed.
+[0m16:43:16.040887 [debug] [MainThread]: Connection 'test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25' was properly closed.
+[0m16:43:16.042305 [debug] [MainThread]: Command end result
+[0m16:43:16.114790 [debug] [MainThread]: Wrote artifact WritableManifest to D:\ESTUDOS\projetos\anp-fuel\dbt\target\manifest.json
+[0m16:43:16.132040 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\ESTUDOS\projetos\anp-fuel\dbt\target\semantic_manifest.json
+[0m16:43:16.162789 [debug] [MainThread]: Wrote artifact OsiDocument to D:\ESTUDOS\projetos\anp-fuel\dbt\target\osi_document.json
+[0m16:43:16.169439 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\ESTUDOS\projetos\anp-fuel\dbt\target\run_results.json
+[0m16:43:16.323787 [debug] [MainThread]: Acquiring new postgres connection 'generate_catalog'
+[0m16:43:16.324119 [info ] [MainThread]: Building catalog
+[0m16:43:16.330985 [debug] [ThreadPool]: Acquiring new postgres connection 'anp_fuel.information_schema'
+[0m16:43:16.335434 [debug] [ThreadPool]: Using postgres connection "anp_fuel.information_schema"
+[0m16:43:16.335728 [debug] [ThreadPool]: On anp_fuel.information_schema: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "anp_fuel", "target_name": "dev", "connection_name": "anp_fuel.information_schema"} */
+
+    
+    
+
+    select
+        'anp_fuel' as table_database,
+        sch.nspname as table_schema,
+        tbl.relname as table_name,
+        case tbl.relkind
+            when 'v' then 'VIEW'
+            when 'm' then 'MATERIALIZED VIEW'
+            else 'BASE TABLE'
+        end as table_type,
+        tbl_desc.description as table_comment,
+        col.attname as column_name,
+        col.attnum as column_index,
+        pg_catalog.format_type(col.atttypid, col.atttypmod) as column_type,
+        col_desc.description as column_comment,
+        pg_get_userbyid(tbl.relowner) as table_owner
+
+    from pg_catalog.pg_namespace sch
+    join pg_catalog.pg_class tbl on tbl.relnamespace = sch.oid
+    join pg_catalog.pg_attribute col on col.attrelid = tbl.oid
+    left outer join pg_catalog.pg_description tbl_desc on (tbl_desc.objoid = tbl.oid and tbl_desc.objsubid = 0)
+    left outer join pg_catalog.pg_description col_desc on (col_desc.objoid = tbl.oid and col_desc.objsubid = col.attnum)
+    where ((upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('gold_etanol_vs_gasolina')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('gold_ranking_bandeiras')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('gold_variacao_mensal')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('precos_combustiveis')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('stg_precos')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('gold_preco_mensal_uf')))
+      and not pg_is_other_temp_schema(sch.oid) -- not a temporary schema belonging to another session
+      and tbl.relpersistence in ('p', 'u') -- [p]ermanent table or [u]nlogged table. Exclude [t]emporary tables
+      and tbl.relkind in ('r', 'v', 'f', 'p', 'm') -- o[r]dinary table, [v]iew, [f]oreign table, [p]artitioned table, [m]aterialized view. Other values are [i]ndex, [S]equence, [c]omposite type, [t]OAST table
+      and col.attnum > 0 -- negative numbers are used for system columns such as oid
+      and not col.attisdropped -- column as not been dropped
+
+    order by
+        sch.nspname,
+        tbl.relname,
+        col.attnum
+[0m16:43:16.335985 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:43:16.902050 [debug] [ThreadPool]: SQL status: SELECT 51 in 0.566 seconds
+[0m16:43:16.904391 [debug] [ThreadPool]: On anp_fuel.information_schema: ROLLBACK
+[0m16:43:16.904805 [debug] [ThreadPool]: On anp_fuel.information_schema: Close
+[0m16:43:16.914266 [debug] [MainThread]: Wrote artifact CatalogArtifact to D:\ESTUDOS\projetos\anp-fuel\dbt\target\catalog.json
+[0m16:43:16.936471 [debug] [MainThread]: Wrote artifact WritableManifest to D:\ESTUDOS\projetos\anp-fuel\dbt\target\manifest.json
+[0m16:43:16.938768 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\ESTUDOS\projetos\anp-fuel\dbt\target\semantic_manifest.json
+[0m16:43:16.940885 [debug] [MainThread]: Wrote artifact OsiDocument to D:\ESTUDOS\projetos\anp-fuel\dbt\target\osi_document.json
+[0m16:43:16.941102 [info ] [MainThread]: Catalog written to D:\ESTUDOS\projetos\anp-fuel\dbt\target\catalog.json
+[0m16:43:16.942703 [debug] [MainThread]: Command `dbt docs generate` succeeded at 16:43:16.942615 after 4.53 seconds
+[0m16:43:16.942932 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m16:43:16.943116 [debug] [MainThread]: Connection 'anp_fuel.information_schema' was properly closed.
+[0m16:43:16.943326 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F435E1A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F3F8F2F10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026F3DCF8050>]}
+[0m16:43:16.943566 [debug] [MainThread]: Flushing usage events
+[0m16:43:17.616506 [debug] [MainThread]: An error was encountered while trying to flush usage events

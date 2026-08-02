@@ -9,11 +9,18 @@ wheels/
 # Virtual environments
 .venv
 
-# Folders
-docs
-
 # Credenciais
 .env
 
-# Dados
+# Dados (camadas bronze/silver ficam fora do repo)
 data/
+
+# dbt — artefatos de build
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Editor / SO
+.vscode/
+.ipynb_checkpoints/
+Thumbs.db
