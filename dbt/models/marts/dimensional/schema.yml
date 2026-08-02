@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: dim_posto
+    columns:
+      - name: sk_posto
+        tests: [not_null, unique]
+  - name: dim_produto
+    columns:
+      - name: sk_produto
+        tests: [not_null, unique]
+  - name: dim_tempo
+    columns:
+      - name: sk_tempo
+        tests: [not_null, unique]
+  - name: fato_coleta
+    columns:
+      - name: valor_venda
+        tests: [not_null]
+      - name: sk_posto
+        tests:
+          - relationships:
+              to: ref('dim_posto')
+              field: sk_posto
+      - name: sk_produto
+        tests:
+          - relationships:
+              to: ref('dim_produto')
+              field: sk_produto
+      - name: sk_tempo
+        tests:
+          - relationships:
+              to: ref('dim_tempo')
+              field: sk_tempo

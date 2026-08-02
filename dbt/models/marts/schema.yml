@@ -13,7 +13,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ["ETANOL", "GASOLINA"]
+              arguments:
+                values: ["ETANOL", "GASOLINA"]
 
   - name: gold_variacao_mensal
     columns:
