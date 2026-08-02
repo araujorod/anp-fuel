@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: anp
+    schema: public
+    tables:
+      - name: precos_combustiveis
+        description: "Camada Silver carregada pelo pipeline Python (load.py)"

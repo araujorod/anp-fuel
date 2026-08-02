@@ -1,0 +1,12 @@
+name: anp_fuel
+version: "1.0.0"
+profile: anp_fuel          # deve casar com o nome no profiles.yml (passo 3)
+
+model-paths: ["models"]
+
+models:
+  anp_fuel:
+    staging:
+      +materialized: view    # staging vira VIEW (leve, sempre atual)
+    marts:
+      +materialized: table   # gold vira TABLE (materializada, rápida de consultar)

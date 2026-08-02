@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: gold_preco_mensal_uf
+    columns:
+      - name: preco_medio
+        tests:
+          - not_null
+
+  - name: gold_etanol_vs_gasolina
+    columns:
+      - name: combustivel_vantajoso
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["ETANOL", "GASOLINA"]
+
+  - name: gold_variacao_mensal
+    columns:
+      - name: preco_medio
+        tests:
+          - not_null

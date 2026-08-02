@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_precos
+    columns:
+      - name: valor_venda
+        tests:
+          - not_null
+      - name: uf
+        tests:
+          - not_null
+      - name: produto
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - GASOLINA
+                - GASOLINA ADITIVADA
+                - ETANOL
+                - DIESEL
+                - DIESEL S10
+                - GNV
