@@ -12,6 +12,7 @@ SELECT
     produto,
     data_coleta,
     valor_venda,
+    unidade_medida,
     bandeira,
     DATE_TRUNC('month', data_coleta)::date AS mes_coleta
 FROM {{ source('anp', 'precos_combustiveis') }}

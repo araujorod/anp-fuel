@@ -13,3 +13,18 @@ Runtime Error
 [0m16:39:16.441133 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BB852D5350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BB853E04D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BB853F8050>]}
 [0m16:39:16.441398 [debug] [MainThread]: Flushing usage events
 [0m16:39:17.067987 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:16:42.397728 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002915BC00830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291594891D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002915E40FED0>]}
+
+
+============================== 18:16:42.401407 | 88da80b0-ba44-4b31-af40-454892524178 ==============================
+[0m18:16:42.401407 [info ] [MainThread]: Running with dbt=1.12.0
+[0m18:16:42.402039 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\arauj\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt deps', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m18:16:42.402612 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\ESTUDOS\projetos\anp-fuel\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m18:16:42.403443 [debug] [MainThread]: Command `dbt deps` failed at 18:16:42.403344 after 0.17 seconds
+[0m18:16:42.403810 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002915E273820>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002915E4A05F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002915E446AD0>]}
+[0m18:16:42.404096 [debug] [MainThread]: Flushing usage events
+[0m18:16:43.068050 [debug] [MainThread]: An error was encountered while trying to flush usage events

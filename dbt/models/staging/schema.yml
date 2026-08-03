@@ -13,10 +13,11 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values:
-                - GASOLINA
-                - GASOLINA ADITIVADA
-                - ETANOL
-                - DIESEL
-                - DIESEL S10
-                - GNV
+              arguments:
+                values:
+                  - GASOLINA
+                  - GASOLINA ADITIVADA
+                  - ETANOL
+                  - DIESEL
+                  - DIESEL S10
+                  - GNV
