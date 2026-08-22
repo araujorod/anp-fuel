@@ -1,0 +1,9 @@
+FROM apache/airflow:3.0.1
+
+# Dependências do pipeline anp-fuel (as tasks rodam dentro deste container)
+RUN pip install --no-cache-dir \
+    pandas \
+    pyarrow \
+    "psycopg[binary]" \
+    python-dotenv \
+    dbt-postgres
