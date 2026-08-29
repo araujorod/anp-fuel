@@ -7246,3 +7246,1611 @@ having count(*) > 1
 [0m22:21:02.804599 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000194E78B9610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000194E8085FF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000194E8087CD0>]}
 [0m22:21:02.804857 [debug] [MainThread]: Flushing usage events
 [0m22:21:03.729807 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:34:10.848542 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281a239a60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281a0b8fb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c2818e847a0>]}
+
+
+============================== 20:34:10.858545 | 774de1a9-9ee4-4996-af7c-a5e773c55fd2 ==============================
+[0m20:34:10.858545 [info ] [MainThread]: Running with dbt=1.12.3
+[0m20:34:10.859604 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'partial_parse': 'True', 'use_colors': 'True', 'introspect': 'True', 'version_check': 'True', 'empty': 'False', 'hints_enabled': 'True', 'quiet': 'False', 'write_json': 'True', 'log_path': '/opt/airflow/project/dbt/logs', 'indirect_selection': 'eager', 'printer_width': '80', 'fail_fast': 'False', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'log_cache_events': 'False', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'no_print': 'None', 'invocation_command': 'dbt run', 'maximum_seed_size_mib': '1', 'use_experimental_parser': 'False', 'warn_error': 'None', 'profiles_dir': '/opt/airflow/project/docker'}
+[0m20:34:11.085645 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c2818ed6480>]}
+[0m20:34:11.142376 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c2819944ec0>]}
+[0m20:34:11.144680 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m20:34:11.256515 [debug] [MainThread]: checksum: 11f3b253153be323b79d30d77717d7b48c00f100bb4699bbedd80df55e59f8a9, vars: {}, profile: anp_fuel, target: docker, version: 1.12.3
+[0m20:34:11.381322 [info ] [MainThread]: Unable to do partial parsing because of a version mismatch
+[0m20:34:11.382825 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281710d760>]}
+[0m20:34:14.153088 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281476bc20>]}
+[0m20:34:14.289026 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/project/dbt/target/manifest.json
+[0m20:34:14.306168 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/project/dbt/target/semantic_manifest.json
+[0m20:34:14.337256 [debug] [MainThread]: Wrote artifact OsiDocument to /opt/airflow/project/dbt/target/osi_document.json
+[0m20:34:14.390702 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28146ac3b0>]}
+[0m20:34:14.391767 [info ] [MainThread]: Found 9 models, 18 data tests, 1 source, 593 macros
+[0m20:34:14.392775 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28146b5250>]}
+[0m20:34:14.395760 [info ] [MainThread]: 
+[0m20:34:14.396705 [info ] [MainThread]: Concurrency: 4 threads (target='docker')
+[0m20:34:14.397436 [info ] [MainThread]: 
+[0m20:34:14.398286 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m20:34:14.403612 [debug] [ThreadPool]: Acquiring new postgres connection 'list_anp_fuel'
+[0m20:34:14.445705 [debug] [ThreadPool]: Using postgres connection "list_anp_fuel"
+[0m20:34:14.446835 [debug] [ThreadPool]: On list_anp_fuel: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "connection_name": "list_anp_fuel"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m20:34:14.447767 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:34:14.465913 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.018 seconds
+[0m20:34:14.467683 [debug] [ThreadPool]: On list_anp_fuel: Close
+[0m20:34:14.470669 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_anp_fuel, now list_anp_fuel_public)
+[0m20:34:14.475674 [debug] [ThreadPool]: Using postgres connection "list_anp_fuel_public"
+[0m20:34:14.476649 [debug] [ThreadPool]: On list_anp_fuel_public: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "connection_name": "list_anp_fuel_public"} */
+select
+      'anp_fuel' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'anp_fuel' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'anp_fuel' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+    union all
+    select distinct
+     'anp_fuel' as database,
+     proname as name,
+     ns.nspname as schema,
+     'function' as type
+    from pg_proc
+     join pg_namespace as ns on pronamespace = ns.oid
+    where ns.nspname ilike 'public'
+  
+[0m20:34:14.477508 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:34:14.498387 [debug] [ThreadPool]: SQL status: SELECT 10 in 0.021 seconds
+[0m20:34:14.500490 [debug] [ThreadPool]: On list_anp_fuel_public: ROLLBACK
+[0m20:34:14.501418 [debug] [ThreadPool]: On list_anp_fuel_public: Close
+[0m20:34:14.506783 [debug] [MainThread]: Using postgres connection "master"
+[0m20:34:14.508808 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m20:34:14.509536 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:34:14.523378 [debug] [MainThread]: SQL status: SELECT 1 in 0.014 seconds
+[0m20:34:14.526400 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28146b7e90>]}
+[0m20:34:14.527324 [debug] [MainThread]: On master: ROLLBACK
+[0m20:34:14.528187 [debug] [MainThread]: On master: COMMIT
+[0m20:34:14.528901 [debug] [MainThread]: Using postgres connection "master"
+[0m20:34:14.529572 [debug] [MainThread]: On master: COMMIT
+[0m20:34:14.530417 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m20:34:14.531094 [debug] [MainThread]: On master: Close
+[0m20:34:14.537294 [debug] [Thread-1 (]: Began running node model.anp_fuel.stg_precos
+[0m20:34:14.538790 [info ] [Thread-1 (]: 1 of 9 START sql view model public.stg_precos .................................. [RUN]
+[0m20:34:14.539714 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_anp_fuel_public, now model.anp_fuel.stg_precos)
+[0m20:34:14.540441 [debug] [Thread-1 (]: Began compiling node model.anp_fuel.stg_precos
+[0m20:34:14.545910 [debug] [Thread-1 (]: Writing injected SQL for node "model.anp_fuel.stg_precos"
+[0m20:34:14.561297 [debug] [Thread-1 (]: Began executing node model.anp_fuel.stg_precos
+[0m20:34:14.591471 [debug] [Thread-1 (]: Writing runtime sql for node "model.anp_fuel.stg_precos"
+[0m20:34:14.607085 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.stg_precos"
+[0m20:34:14.608345 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.stg_precos"} */
+
+  create view "anp_fuel"."public"."stg_precos__dbt_tmp"
+    
+    
+  as (
+    -- Staging: ponte padronizada entre a fonte e os modelos analíticos.
+-- Regra: só renomes leves, casts e derivações simples. Nada de agregação.
+
+SELECT
+    id,
+    revenda,
+    cnpj,
+    regiao,
+    uf,
+    cidade,
+    bairro,
+    produto,
+    data_coleta,
+    valor_venda,
+    unidade_medida,
+    bandeira,
+    DATE_TRUNC('month', data_coleta)::date AS mes_coleta
+FROM "anp_fuel"."public"."precos_combustiveis"
+  );
+[0m20:34:14.609201 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:14.624129 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.015 seconds
+[0m20:34:14.630243 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.stg_precos"
+[0m20:34:14.631250 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.stg_precos"} */
+alter table "anp_fuel"."public"."stg_precos" rename to "stg_precos__dbt_backup"
+[0m20:34:14.633747 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m20:34:14.636713 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.stg_precos"
+[0m20:34:14.637499 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.stg_precos"} */
+alter table "anp_fuel"."public"."stg_precos__dbt_tmp" rename to "stg_precos"
+[0m20:34:14.638616 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:14.653628 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: COMMIT
+[0m20:34:14.654769 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.stg_precos"
+[0m20:34:14.655694 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: COMMIT
+[0m20:34:14.658118 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m20:34:14.663689 [debug] [Thread-1 (]: Applying DROP to: "anp_fuel"."public"."stg_precos__dbt_backup"
+[0m20:34:14.668852 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.stg_precos"
+[0m20:34:14.669631 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.stg_precos"} */
+drop view if exists "anp_fuel"."public"."stg_precos__dbt_backup" cascade
+[0m20:34:14.675739 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m20:34:14.678876 [debug] [Thread-1 (]: On model.anp_fuel.stg_precos: Close
+[0m20:34:14.681120 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281bcb8d10>]}
+[0m20:34:14.682155 [info ] [Thread-1 (]: 1 of 9 OK created sql view model public.stg_precos ............................. [[32mCREATE VIEW[0m in 0.14s]
+[0m20:34:14.683154 [debug] [Thread-1 (]: Finished running node model.anp_fuel.stg_precos
+[0m20:34:14.685049 [debug] [Thread-3 (]: Began running node model.anp_fuel.dim_posto
+[0m20:34:14.685490 [debug] [Thread-4 (]: Began running node model.anp_fuel.dim_produto
+[0m20:34:14.685891 [debug] [Thread-2 (]: Began running node model.anp_fuel.dim_tempo
+[0m20:34:14.686383 [info ] [Thread-3 (]: 2 of 9 START sql table model public.dim_posto .................................. [RUN]
+[0m20:34:14.686803 [debug] [Thread-1 (]: Began running node model.anp_fuel.fato_coleta
+[0m20:34:14.687364 [info ] [Thread-4 (]: 3 of 9 START sql table model public.dim_produto ................................ [RUN]
+[0m20:34:14.688597 [info ] [Thread-2 (]: 4 of 9 START sql table model public.dim_tempo .................................. [RUN]
+[0m20:34:14.689615 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.anp_fuel.dim_posto'
+[0m20:34:14.690403 [info ] [Thread-1 (]: 5 of 9 START sql table model public.fato_coleta ................................ [RUN]
+[0m20:34:14.691921 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.anp_fuel.dim_produto'
+[0m20:34:14.692908 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.anp_fuel.dim_tempo'
+[0m20:34:14.693671 [debug] [Thread-3 (]: Began compiling node model.anp_fuel.dim_posto
+[0m20:34:14.694451 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.anp_fuel.stg_precos, now model.anp_fuel.fato_coleta)
+[0m20:34:14.695194 [debug] [Thread-4 (]: Began compiling node model.anp_fuel.dim_produto
+[0m20:34:14.695870 [debug] [Thread-2 (]: Began compiling node model.anp_fuel.dim_tempo
+[0m20:34:14.699489 [debug] [Thread-3 (]: Writing injected SQL for node "model.anp_fuel.dim_posto"
+[0m20:34:14.701223 [debug] [Thread-1 (]: Began compiling node model.anp_fuel.fato_coleta
+[0m20:34:14.706599 [debug] [Thread-4 (]: Writing injected SQL for node "model.anp_fuel.dim_produto"
+[0m20:34:14.712741 [debug] [Thread-2 (]: Writing injected SQL for node "model.anp_fuel.dim_tempo"
+[0m20:34:14.722412 [debug] [Thread-1 (]: Writing injected SQL for node "model.anp_fuel.fato_coleta"
+[0m20:34:14.735128 [debug] [Thread-3 (]: Began executing node model.anp_fuel.dim_posto
+[0m20:34:14.735871 [debug] [Thread-2 (]: Began executing node model.anp_fuel.dim_tempo
+[0m20:34:14.764431 [debug] [Thread-3 (]: Writing runtime sql for node "model.anp_fuel.dim_posto"
+[0m20:34:14.765185 [debug] [Thread-2 (]: Writing runtime sql for node "model.anp_fuel.dim_tempo"
+[0m20:34:14.766578 [debug] [Thread-4 (]: Began executing node model.anp_fuel.dim_produto
+[0m20:34:14.767370 [debug] [Thread-1 (]: Began executing node model.anp_fuel.fato_coleta
+[0m20:34:14.770617 [debug] [Thread-4 (]: Writing runtime sql for node "model.anp_fuel.dim_produto"
+[0m20:34:14.773973 [debug] [Thread-1 (]: Writing runtime sql for node "model.anp_fuel.fato_coleta"
+[0m20:34:14.782931 [debug] [Thread-2 (]: Using postgres connection "model.anp_fuel.dim_tempo"
+[0m20:34:14.783926 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.dim_posto"
+[0m20:34:14.784396 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_tempo"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."dim_tempo__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Dimensão tempo: uma linha por data presente na série.
+
+SELECT DISTINCT
+    md5(cast(coalesce(cast(data_coleta as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) AS sk_tempo,
+    data_coleta,
+    EXTRACT(YEAR    FROM data_coleta)::int  AS ano,
+    EXTRACT(MONTH   FROM data_coleta)::int  AS mes,
+    EXTRACT(QUARTER FROM data_coleta)::int  AS trimestre,
+    CASE WHEN EXTRACT(MONTH FROM data_coleta) <= 6 THEN 1 ELSE 2 END AS semestre,
+    TO_CHAR(data_coleta, 'TMMonth')         AS nome_mes,
+    EXTRACT(ISODOW FROM data_coleta)::int   AS dia_semana
+FROM "anp_fuel"."public"."stg_precos"
+  );
+  
+[0m20:34:14.785184 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_posto"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."dim_posto__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Dimensão posto: uma linha por CNPJ (estabelecimento revendedor).
+
+SELECT
+    md5(cast(coalesce(cast(cnpj as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) AS sk_posto,
+    cnpj,
+    MAX(revenda)  AS revenda,
+    MAX(bandeira) AS bandeira,
+    MAX(uf)       AS uf,
+    MAX(cidade)   AS cidade,
+    MAX(bairro)   AS bairro
+FROM "anp_fuel"."public"."stg_precos"
+GROUP BY cnpj
+  );
+  
+[0m20:34:14.786504 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m20:34:14.787176 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.dim_produto"
+[0m20:34:14.787521 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m20:34:14.787986 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.fato_coleta"
+[0m20:34:14.789362 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_produto"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."dim_produto__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- dim_produto.sql
+
+SELECT
+    md5(cast(coalesce(cast(produto as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) AS sk_produto,
+    produto,
+    MAX(unidade_medida) AS unidade_medida
+FROM "anp_fuel"."public"."stg_precos"
+GROUP BY produto
+  );
+  
+[0m20:34:14.790861 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.fato_coleta"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."fato_coleta__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Fato: uma linha por coleta de preço (grão: posto × produto × data).
+
+SELECT
+    md5(cast(coalesce(cast(s.cnpj as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT))        AS sk_posto,
+    md5(cast(coalesce(cast(s.produto as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT))     AS sk_produto,
+    md5(cast(coalesce(cast(s.data_coleta as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) AS sk_tempo,
+    s.valor_venda
+FROM "anp_fuel"."public"."stg_precos" s
+  );
+  
+[0m20:34:14.792109 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m20:34:14.792874 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:15.384799 [debug] [Thread-4 (]: SQL status: SELECT 6 in 0.593 seconds
+[0m20:34:15.396772 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.dim_produto"
+[0m20:34:15.398040 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_produto"} */
+alter table "anp_fuel"."public"."dim_produto" rename to "dim_produto__dbt_backup"
+[0m20:34:15.400168 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m20:34:15.403309 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.dim_produto"
+[0m20:34:15.404142 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_produto"} */
+alter table "anp_fuel"."public"."dim_produto__dbt_tmp" rename to "dim_produto"
+[0m20:34:15.405368 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:15.409148 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: COMMIT
+[0m20:34:15.410278 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.dim_produto"
+[0m20:34:15.411003 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: COMMIT
+[0m20:34:15.420794 [debug] [Thread-4 (]: SQL status: COMMIT in 0.009 seconds
+[0m20:34:15.424745 [debug] [Thread-4 (]: Applying DROP to: "anp_fuel"."public"."dim_produto__dbt_backup"
+[0m20:34:15.430480 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.dim_produto"
+[0m20:34:15.431801 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_produto"} */
+drop table if exists "anp_fuel"."public"."dim_produto__dbt_backup" cascade
+[0m20:34:15.435872 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m20:34:15.437944 [debug] [Thread-4 (]: On model.anp_fuel.dim_produto: Close
+[0m20:34:15.439021 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28142e4650>]}
+[0m20:34:15.440089 [info ] [Thread-4 (]: 3 of 9 OK created sql table model public.dim_produto ........................... [[32mSELECT 6[0m in 0.75s]
+[0m20:34:15.441272 [debug] [Thread-4 (]: Finished running node model.anp_fuel.dim_produto
+[0m20:34:15.442395 [debug] [Thread-4 (]: Began running node model.anp_fuel.gold_etanol_vs_gasolina
+[0m20:34:15.443303 [info ] [Thread-4 (]: 6 of 9 START sql table model public.gold_etanol_vs_gasolina .................... [RUN]
+[0m20:34:15.444214 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.anp_fuel.dim_produto, now model.anp_fuel.gold_etanol_vs_gasolina)
+[0m20:34:15.444917 [debug] [Thread-4 (]: Began compiling node model.anp_fuel.gold_etanol_vs_gasolina
+[0m20:34:15.447097 [debug] [Thread-4 (]: Writing injected SQL for node "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:15.461494 [debug] [Thread-4 (]: Began executing node model.anp_fuel.gold_etanol_vs_gasolina
+[0m20:34:15.468103 [debug] [Thread-4 (]: Writing runtime sql for node "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:15.483224 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:15.484938 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_etanol_vs_gasolina"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."gold_etanol_vs_gasolina__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Compara preço médio mensal de etanol e gasolina por UF e aplica a
+-- regra dos 70%: etanol compensa se custar até 70% da gasolina
+-- (por render ~30% menos por litro).
+
+WITH precos_mensais AS (
+    SELECT
+        uf,
+        mes_coleta,
+        produto,
+        AVG(valor_venda) AS preco_medio
+    FROM "anp_fuel"."public"."stg_precos"
+    WHERE produto IN ('ETANOL', 'GASOLINA')
+    GROUP BY uf, mes_coleta, produto
+),
+
+pivotado AS (
+    SELECT
+        uf,
+        mes_coleta,
+        MAX(CASE WHEN produto = 'ETANOL'   THEN preco_medio END) AS preco_etanol,
+        MAX(CASE WHEN produto = 'GASOLINA' THEN preco_medio END) AS preco_gasolina
+    FROM precos_mensais
+    GROUP BY uf, mes_coleta
+)
+
+SELECT
+    uf,
+    mes_coleta,
+    ROUND(preco_etanol, 3)                       AS preco_etanol,
+    ROUND(preco_gasolina, 3)                     AS preco_gasolina,
+    ROUND(preco_etanol / preco_gasolina, 4)      AS razao_etanol_gasolina,
+    CASE
+        WHEN preco_etanol / preco_gasolina <= 0.70 THEN 'ETANOL'
+        ELSE 'GASOLINA'
+    END                                          AS combustivel_vantajoso
+FROM pivotado
+WHERE preco_etanol IS NOT NULL
+  AND preco_gasolina IS NOT NULL
+  );
+  
+[0m20:34:15.485835 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:34:15.764876 [debug] [Thread-3 (]: SQL status: SELECT 16908 in 0.977 seconds
+[0m20:34:15.769325 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.dim_posto"
+[0m20:34:15.770472 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_posto"} */
+alter table "anp_fuel"."public"."dim_posto" rename to "dim_posto__dbt_backup"
+[0m20:34:15.771740 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:15.774699 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.dim_posto"
+[0m20:34:15.775836 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_posto"} */
+alter table "anp_fuel"."public"."dim_posto__dbt_tmp" rename to "dim_posto"
+[0m20:34:15.777151 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:15.779337 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: COMMIT
+[0m20:34:15.780114 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.dim_posto"
+[0m20:34:15.780828 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: COMMIT
+[0m20:34:15.783966 [debug] [Thread-3 (]: SQL status: COMMIT in 0.002 seconds
+[0m20:34:15.786412 [debug] [Thread-3 (]: Applying DROP to: "anp_fuel"."public"."dim_posto__dbt_backup"
+[0m20:34:15.787748 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.dim_posto"
+[0m20:34:15.788762 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_posto"} */
+drop table if exists "anp_fuel"."public"."dim_posto__dbt_backup" cascade
+[0m20:34:15.793623 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.004 seconds
+[0m20:34:15.796303 [debug] [Thread-3 (]: On model.anp_fuel.dim_posto: Close
+[0m20:34:15.797722 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28143d4140>]}
+[0m20:34:15.800941 [info ] [Thread-3 (]: 2 of 9 OK created sql table model public.dim_posto ............................. [[32mSELECT 16908[0m in 1.11s]
+[0m20:34:15.802018 [debug] [Thread-3 (]: Finished running node model.anp_fuel.dim_posto
+[0m20:34:15.803177 [debug] [Thread-3 (]: Began running node model.anp_fuel.gold_preco_mensal_uf
+[0m20:34:15.804322 [info ] [Thread-3 (]: 7 of 9 START sql table model public.gold_preco_mensal_uf ....................... [RUN]
+[0m20:34:15.805384 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.anp_fuel.dim_posto, now model.anp_fuel.gold_preco_mensal_uf)
+[0m20:34:15.806164 [debug] [Thread-3 (]: Began compiling node model.anp_fuel.gold_preco_mensal_uf
+[0m20:34:15.808635 [debug] [Thread-3 (]: Writing injected SQL for node "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:15.827495 [debug] [Thread-3 (]: Began executing node model.anp_fuel.gold_preco_mensal_uf
+[0m20:34:15.832943 [debug] [Thread-3 (]: Writing runtime sql for node "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:15.852087 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:15.853444 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_preco_mensal_uf"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."gold_preco_mensal_uf__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Preço médio mensal por UF e produto — tabela pronta para análise/dashboard.
+
+SELECT
+    uf,
+    produto,
+    mes_coleta,
+    ROUND(AVG(valor_venda), 3) AS preco_medio,
+    MIN(valor_venda)           AS preco_min,
+    MAX(valor_venda)           AS preco_max,
+    COUNT(*)                   AS qtd_coletas
+FROM "anp_fuel"."public"."stg_precos"
+GROUP BY uf, produto, mes_coleta
+  );
+  
+[0m20:34:15.854672 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:34:16.116414 [debug] [Thread-4 (]: SQL status: SELECT 1134 in 0.630 seconds
+[0m20:34:16.120275 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:16.121165 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_etanol_vs_gasolina"} */
+alter table "anp_fuel"."public"."gold_etanol_vs_gasolina" rename to "gold_etanol_vs_gasolina__dbt_backup"
+[0m20:34:16.122872 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m20:34:16.125493 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:16.126273 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_etanol_vs_gasolina"} */
+alter table "anp_fuel"."public"."gold_etanol_vs_gasolina__dbt_tmp" rename to "gold_etanol_vs_gasolina"
+[0m20:34:16.127404 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:16.131173 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: COMMIT
+[0m20:34:16.132213 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:16.132957 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: COMMIT
+[0m20:34:16.143922 [debug] [Thread-4 (]: SQL status: COMMIT in 0.010 seconds
+[0m20:34:16.146732 [debug] [Thread-4 (]: Applying DROP to: "anp_fuel"."public"."gold_etanol_vs_gasolina__dbt_backup"
+[0m20:34:16.148050 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_etanol_vs_gasolina"
+[0m20:34:16.148823 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_etanol_vs_gasolina"} */
+drop table if exists "anp_fuel"."public"."gold_etanol_vs_gasolina__dbt_backup" cascade
+[0m20:34:16.153200 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m20:34:16.155281 [debug] [Thread-4 (]: On model.anp_fuel.gold_etanol_vs_gasolina: Close
+[0m20:34:16.156603 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28146f28a0>]}
+[0m20:34:16.158244 [info ] [Thread-4 (]: 6 of 9 OK created sql table model public.gold_etanol_vs_gasolina ............... [[32mSELECT 1134[0m in 0.71s]
+[0m20:34:16.159614 [debug] [Thread-4 (]: Finished running node model.anp_fuel.gold_etanol_vs_gasolina
+[0m20:34:16.160460 [debug] [Thread-4 (]: Began running node model.anp_fuel.gold_ranking_bandeiras
+[0m20:34:16.161314 [info ] [Thread-4 (]: 8 of 9 START sql table model public.gold_ranking_bandeiras ..................... [RUN]
+[0m20:34:16.162220 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.anp_fuel.gold_etanol_vs_gasolina, now model.anp_fuel.gold_ranking_bandeiras)
+[0m20:34:16.162991 [debug] [Thread-4 (]: Began compiling node model.anp_fuel.gold_ranking_bandeiras
+[0m20:34:16.166569 [debug] [Thread-4 (]: Writing injected SQL for node "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:16.183018 [debug] [Thread-4 (]: Began executing node model.anp_fuel.gold_ranking_bandeiras
+[0m20:34:16.189184 [debug] [Thread-4 (]: Writing runtime sql for node "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:16.208378 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:16.209391 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_ranking_bandeiras"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."gold_ranking_bandeiras__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Participação de cada bandeira no total de coletas, por UF.
+-- Exercita: window functions (participação percentual e ranking).
+
+SELECT
+    uf,
+    bandeira,
+    COUNT(*)                                          AS qtd_coletas,
+    COUNT(DISTINCT cnpj)                              AS qtd_postos,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (PARTITION BY uf),
+        2
+    )                                                 AS participacao_pct,
+    RANK() OVER (PARTITION BY uf ORDER BY COUNT(*) DESC) AS posicao
+FROM "anp_fuel"."public"."stg_precos"
+GROUP BY uf, bandeira
+  );
+  
+[0m20:34:16.210269 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:34:16.804847 [debug] [Thread-3 (]: SQL status: SELECT 6403 in 0.950 seconds
+[0m20:34:16.808589 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:16.809830 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_preco_mensal_uf"} */
+alter table "anp_fuel"."public"."gold_preco_mensal_uf" rename to "gold_preco_mensal_uf__dbt_backup"
+[0m20:34:16.811324 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:16.813764 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:16.814481 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_preco_mensal_uf"} */
+alter table "anp_fuel"."public"."gold_preco_mensal_uf__dbt_tmp" rename to "gold_preco_mensal_uf"
+[0m20:34:16.815648 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:16.817846 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: COMMIT
+[0m20:34:16.818638 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:16.819311 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: COMMIT
+[0m20:34:16.829505 [debug] [Thread-3 (]: SQL status: COMMIT in 0.009 seconds
+[0m20:34:16.832655 [debug] [Thread-3 (]: Applying DROP to: "anp_fuel"."public"."gold_preco_mensal_uf__dbt_backup"
+[0m20:34:16.833894 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_preco_mensal_uf"
+[0m20:34:16.834556 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_preco_mensal_uf"} */
+drop table if exists "anp_fuel"."public"."gold_preco_mensal_uf__dbt_backup" cascade
+[0m20:34:16.837814 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m20:34:16.839687 [debug] [Thread-3 (]: On model.anp_fuel.gold_preco_mensal_uf: Close
+[0m20:34:16.840723 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28146f0e00>]}
+[0m20:34:16.841684 [info ] [Thread-3 (]: 7 of 9 OK created sql table model public.gold_preco_mensal_uf .................. [[32mSELECT 6403[0m in 1.04s]
+[0m20:34:16.842655 [debug] [Thread-3 (]: Finished running node model.anp_fuel.gold_preco_mensal_uf
+[0m20:34:16.843414 [debug] [Thread-3 (]: Began running node model.anp_fuel.gold_variacao_mensal
+[0m20:34:16.844651 [info ] [Thread-3 (]: 9 of 9 START sql table model public.gold_variacao_mensal ....................... [RUN]
+[0m20:34:16.845662 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.anp_fuel.gold_preco_mensal_uf, now model.anp_fuel.gold_variacao_mensal)
+[0m20:34:16.846388 [debug] [Thread-3 (]: Began compiling node model.anp_fuel.gold_variacao_mensal
+[0m20:34:16.848695 [debug] [Thread-3 (]: Writing injected SQL for node "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:16.865802 [debug] [Thread-3 (]: Began executing node model.anp_fuel.gold_variacao_mensal
+[0m20:34:16.870031 [debug] [Thread-3 (]: Writing runtime sql for node "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:16.885826 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:16.887236 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_variacao_mensal"} */
+
+  
+    
+
+  create  table "anp_fuel"."public"."gold_variacao_mensal__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Variação percentual do preço médio mês a mês, por UF e produto.
+-- Exercita: LAG (comparação com o período anterior).
+
+WITH mensal AS (
+    SELECT
+        uf,
+        produto,
+        mes_coleta,
+        AVG(valor_venda) AS preco_medio
+    FROM "anp_fuel"."public"."stg_precos"
+    GROUP BY uf, produto, mes_coleta
+)
+
+SELECT
+    uf,
+    produto,
+    mes_coleta,
+    ROUND(preco_medio, 3) AS preco_medio,
+    ROUND(
+        100.0 * (preco_medio - LAG(preco_medio) OVER w) / LAG(preco_medio) OVER w,
+        2
+    ) AS variacao_pct
+FROM mensal
+WINDOW w AS (PARTITION BY uf, produto ORDER BY mes_coleta)
+  );
+  
+[0m20:34:16.888125 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:34:17.753158 [debug] [Thread-3 (]: SQL status: SELECT 6403 in 0.865 seconds
+[0m20:34:17.758382 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:17.759465 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_variacao_mensal"} */
+alter table "anp_fuel"."public"."gold_variacao_mensal" rename to "gold_variacao_mensal__dbt_backup"
+[0m20:34:17.761029 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m20:34:17.764131 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:17.764923 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_variacao_mensal"} */
+alter table "anp_fuel"."public"."gold_variacao_mensal__dbt_tmp" rename to "gold_variacao_mensal"
+[0m20:34:17.766150 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:17.769329 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: COMMIT
+[0m20:34:17.770524 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:17.771276 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: COMMIT
+[0m20:34:17.780518 [debug] [Thread-3 (]: SQL status: COMMIT in 0.008 seconds
+[0m20:34:17.784785 [debug] [Thread-3 (]: Applying DROP to: "anp_fuel"."public"."gold_variacao_mensal__dbt_backup"
+[0m20:34:17.786326 [debug] [Thread-3 (]: Using postgres connection "model.anp_fuel.gold_variacao_mensal"
+[0m20:34:17.787040 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_variacao_mensal"} */
+drop table if exists "anp_fuel"."public"."gold_variacao_mensal__dbt_backup" cascade
+[0m20:34:17.790649 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m20:34:17.792599 [debug] [Thread-3 (]: On model.anp_fuel.gold_variacao_mensal: Close
+[0m20:34:17.793593 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28143cba10>]}
+[0m20:34:17.794542 [info ] [Thread-3 (]: 9 of 9 OK created sql table model public.gold_variacao_mensal .................. [[32mSELECT 6403[0m in 0.95s]
+[0m20:34:17.796118 [debug] [Thread-3 (]: Finished running node model.anp_fuel.gold_variacao_mensal
+[0m20:34:17.995514 [debug] [Thread-2 (]: SQL status: SELECT 929 in 3.209 seconds
+[0m20:34:18.000949 [debug] [Thread-2 (]: Using postgres connection "model.anp_fuel.dim_tempo"
+[0m20:34:18.002034 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_tempo"} */
+alter table "anp_fuel"."public"."dim_tempo" rename to "dim_tempo__dbt_backup"
+[0m20:34:18.003971 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m20:34:18.007603 [debug] [Thread-2 (]: Using postgres connection "model.anp_fuel.dim_tempo"
+[0m20:34:18.008319 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_tempo"} */
+alter table "anp_fuel"."public"."dim_tempo__dbt_tmp" rename to "dim_tempo"
+[0m20:34:18.009360 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:18.011348 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: COMMIT
+[0m20:34:18.012154 [debug] [Thread-2 (]: Using postgres connection "model.anp_fuel.dim_tempo"
+[0m20:34:18.012828 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: COMMIT
+[0m20:34:18.020784 [debug] [Thread-2 (]: SQL status: COMMIT in 0.007 seconds
+[0m20:34:18.023268 [debug] [Thread-2 (]: Applying DROP to: "anp_fuel"."public"."dim_tempo__dbt_backup"
+[0m20:34:18.024601 [debug] [Thread-2 (]: Using postgres connection "model.anp_fuel.dim_tempo"
+[0m20:34:18.025501 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.dim_tempo"} */
+drop table if exists "anp_fuel"."public"."dim_tempo__dbt_backup" cascade
+[0m20:34:18.028682 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.002 seconds
+[0m20:34:18.030380 [debug] [Thread-2 (]: On model.anp_fuel.dim_tempo: Close
+[0m20:34:18.031344 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28142c2e10>]}
+[0m20:34:18.032617 [info ] [Thread-2 (]: 4 of 9 OK created sql table model public.dim_tempo ............................. [[32mSELECT 929[0m in 3.34s]
+[0m20:34:18.033703 [debug] [Thread-2 (]: Finished running node model.anp_fuel.dim_tempo
+[0m20:34:21.811296 [debug] [Thread-4 (]: SQL status: SELECT 324 in 5.601 seconds
+[0m20:34:21.814963 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:21.815868 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_ranking_bandeiras"} */
+alter table "anp_fuel"."public"."gold_ranking_bandeiras" rename to "gold_ranking_bandeiras__dbt_backup"
+[0m20:34:21.822298 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m20:34:21.825995 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:21.826779 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_ranking_bandeiras"} */
+alter table "anp_fuel"."public"."gold_ranking_bandeiras__dbt_tmp" rename to "gold_ranking_bandeiras"
+[0m20:34:21.827881 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m20:34:21.829759 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: COMMIT
+[0m20:34:21.830463 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:21.831170 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: COMMIT
+[0m20:34:21.836914 [debug] [Thread-4 (]: SQL status: COMMIT in 0.005 seconds
+[0m20:34:21.839251 [debug] [Thread-4 (]: Applying DROP to: "anp_fuel"."public"."gold_ranking_bandeiras__dbt_backup"
+[0m20:34:21.840400 [debug] [Thread-4 (]: Using postgres connection "model.anp_fuel.gold_ranking_bandeiras"
+[0m20:34:21.841065 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.gold_ranking_bandeiras"} */
+drop table if exists "anp_fuel"."public"."gold_ranking_bandeiras__dbt_backup" cascade
+[0m20:34:21.843997 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.002 seconds
+[0m20:34:21.845838 [debug] [Thread-4 (]: On model.anp_fuel.gold_ranking_bandeiras: Close
+[0m20:34:21.846896 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28143e3800>]}
+[0m20:34:21.847860 [info ] [Thread-4 (]: 8 of 9 OK created sql table model public.gold_ranking_bandeiras ................ [[32mSELECT 324[0m in 5.68s]
+[0m20:34:21.848723 [debug] [Thread-4 (]: Finished running node model.anp_fuel.gold_ranking_bandeiras
+[0m20:34:24.416779 [debug] [Thread-1 (]: SQL status: SELECT 2979683 in 9.624 seconds
+[0m20:34:24.421569 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.fato_coleta"
+[0m20:34:24.422828 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.fato_coleta"} */
+alter table "anp_fuel"."public"."fato_coleta" rename to "fato_coleta__dbt_backup"
+[0m20:34:24.424387 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m20:34:24.427257 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.fato_coleta"
+[0m20:34:24.428141 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.fato_coleta"} */
+alter table "anp_fuel"."public"."fato_coleta__dbt_tmp" rename to "fato_coleta"
+[0m20:34:24.429465 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m20:34:24.431538 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: COMMIT
+[0m20:34:24.432272 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.fato_coleta"
+[0m20:34:24.433023 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: COMMIT
+[0m20:34:24.443053 [debug] [Thread-1 (]: SQL status: COMMIT in 0.009 seconds
+[0m20:34:24.445960 [debug] [Thread-1 (]: Applying DROP to: "anp_fuel"."public"."fato_coleta__dbt_backup"
+[0m20:34:24.447333 [debug] [Thread-1 (]: Using postgres connection "model.anp_fuel.fato_coleta"
+[0m20:34:24.448062 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "model.anp_fuel.fato_coleta"} */
+drop table if exists "anp_fuel"."public"."fato_coleta__dbt_backup" cascade
+[0m20:34:24.451983 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m20:34:24.453879 [debug] [Thread-1 (]: On model.anp_fuel.fato_coleta: Close
+[0m20:34:24.454907 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '774de1a9-9ee4-4996-af7c-a5e773c55fd2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c28142ee450>]}
+[0m20:34:24.456239 [info ] [Thread-1 (]: 5 of 9 OK created sql table model public.fato_coleta ........................... [[32mSELECT 2979683[0m in 9.76s]
+[0m20:34:24.457404 [debug] [Thread-1 (]: Finished running node model.anp_fuel.fato_coleta
+[0m20:34:24.459601 [debug] [MainThread]: On master: COMMIT
+[0m20:34:24.460279 [debug] [MainThread]: Using postgres connection "master"
+[0m20:34:24.460912 [debug] [MainThread]: On master: COMMIT
+[0m20:34:24.461518 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:34:24.466820 [debug] [MainThread]: SQL status: COMMIT in 0.005 seconds
+[0m20:34:24.467704 [debug] [MainThread]: On master: Close
+[0m20:34:24.468575 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:34:24.469191 [debug] [MainThread]: Connection 'model.anp_fuel.fato_coleta' was properly closed.
+[0m20:34:24.469897 [debug] [MainThread]: Connection 'model.anp_fuel.gold_variacao_mensal' was properly closed.
+[0m20:34:24.470542 [debug] [MainThread]: Connection 'model.anp_fuel.gold_ranking_bandeiras' was properly closed.
+[0m20:34:24.471126 [debug] [MainThread]: Connection 'model.anp_fuel.dim_tempo' was properly closed.
+[0m20:34:24.471922 [info ] [MainThread]: 
+[0m20:34:24.472591 [info ] [MainThread]: Finished running 8 table models, 1 view model in 0 hours 0 minutes and 10.07 seconds (10.07s).
+[0m20:34:24.474257 [debug] [MainThread]: Command end result
+[0m20:34:24.541739 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/project/dbt/target/manifest.json
+[0m20:34:24.547871 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/project/dbt/target/semantic_manifest.json
+[0m20:34:24.553354 [debug] [MainThread]: Wrote artifact OsiDocument to /opt/airflow/project/dbt/target/osi_document.json
+[0m20:34:24.574370 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/project/dbt/target/run_results.json
+[0m20:34:24.575311 [info ] [MainThread]: 
+[0m20:34:24.576244 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:34:24.576984 [info ] [MainThread]: 
+[0m20:34:24.577701 [info ] [MainThread]: Done. PASS=9 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=9
+[0m20:34:24.581192 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 13.890144, "process_in_blocks": "15618", "process_kernel_time": 1.11471, "process_mem_max_rss": "151156", "process_out_blocks": "2232", "process_user_time": 4.678586}
+[0m20:34:24.582246 [debug] [MainThread]: Command `dbt run` succeeded at 20:34:24.582130 after 13.89 seconds
+[0m20:34:24.583024 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281d8ff2f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c281906e720>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c2814600440>]}
+[0m20:34:24.583743 [debug] [MainThread]: Flushing usage events
+[0m20:34:25.950505 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:34:28.827464 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772ec19f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772c44ec00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772c44c470>]}
+
+
+============================== 20:34:28.834007 | 98e39d2b-55a7-48c8-a252-33286fb4bbe7 ==============================
+[0m20:34:28.834007 [info ] [MainThread]: Running with dbt=1.12.3
+[0m20:34:28.834967 [debug] [MainThread]: running dbt with arguments {'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'warn_error': 'None', 'target_path': 'None', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'no_print': 'None', 'version_check': 'True', 'partial_parse': 'True', 'invocation_command': 'dbt test', 'hints_enabled': 'True', 'write_json': 'True', 'profiles_dir': '/opt/airflow/project/docker', 'maximum_seed_size_mib': '1', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'fail_fast': 'False', 'quiet': 'False', 'use_experimental_parser': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'use_colors': 'True', 'log_path': '/opt/airflow/project/dbt/logs', 'log_format': 'default'}
+[0m20:34:29.001127 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '98e39d2b-55a7-48c8-a252-33286fb4bbe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772af35940>]}
+[0m20:34:29.057668 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '98e39d2b-55a7-48c8-a252-33286fb4bbe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772c52d940>]}
+[0m20:34:29.060295 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m20:34:29.149491 [debug] [MainThread]: checksum: 11f3b253153be323b79d30d77717d7b48c00f100bb4699bbedd80df55e59f8a9, vars: {}, profile: anp_fuel, target: docker, version: 1.12.3
+[0m20:34:29.635957 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:34:29.637062 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m20:34:29.637788 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:34:29.646630 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '98e39d2b-55a7-48c8-a252-33286fb4bbe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772b7a8bf0>]}
+[0m20:34:29.804006 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/project/dbt/target/manifest.json
+[0m20:34:29.809086 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/project/dbt/target/semantic_manifest.json
+[0m20:34:29.823581 [debug] [MainThread]: Wrote artifact OsiDocument to /opt/airflow/project/dbt/target/osi_document.json
+[0m20:34:29.858352 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '98e39d2b-55a7-48c8-a252-33286fb4bbe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a77297f4e30>]}
+[0m20:34:29.859824 [info ] [MainThread]: Found 9 models, 18 data tests, 1 source, 593 macros
+[0m20:34:29.860695 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '98e39d2b-55a7-48c8-a252-33286fb4bbe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a77297e9280>]}
+[0m20:34:29.863505 [info ] [MainThread]: 
+[0m20:34:29.864452 [info ] [MainThread]: Concurrency: 4 threads (target='docker')
+[0m20:34:29.865154 [info ] [MainThread]: 
+[0m20:34:29.866641 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m20:34:29.871096 [debug] [ThreadPool]: Acquiring new postgres connection 'list_anp_fuel_public'
+[0m20:34:29.968029 [debug] [ThreadPool]: Using postgres connection "list_anp_fuel_public"
+[0m20:34:29.969469 [debug] [ThreadPool]: On list_anp_fuel_public: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "connection_name": "list_anp_fuel_public"} */
+select
+      'anp_fuel' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'anp_fuel' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'anp_fuel' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+    union all
+    select distinct
+     'anp_fuel' as database,
+     proname as name,
+     ns.nspname as schema,
+     'function' as type
+    from pg_proc
+     join pg_namespace as ns on pronamespace = ns.oid
+    where ns.nspname ilike 'public'
+  
+[0m20:34:29.970918 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:34:29.980833 [debug] [ThreadPool]: SQL status: SELECT 10 in 0.010 seconds
+[0m20:34:29.982841 [debug] [ThreadPool]: On list_anp_fuel_public: ROLLBACK
+[0m20:34:29.983991 [debug] [ThreadPool]: On list_anp_fuel_public: Close
+[0m20:34:29.989208 [debug] [MainThread]: Using postgres connection "master"
+[0m20:34:29.990022 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m20:34:29.990984 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:34:29.998997 [debug] [MainThread]: SQL status: SELECT 1 in 0.008 seconds
+[0m20:34:30.000933 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '98e39d2b-55a7-48c8-a252-33286fb4bbe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a77297f8260>]}
+[0m20:34:30.001785 [debug] [MainThread]: On master: ROLLBACK
+[0m20:34:30.002616 [debug] [MainThread]: On master: COMMIT
+[0m20:34:30.003325 [debug] [MainThread]: Using postgres connection "master"
+[0m20:34:30.003938 [debug] [MainThread]: On master: COMMIT
+[0m20:34:30.004860 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m20:34:30.005541 [debug] [MainThread]: On master: Close
+[0m20:34:30.010751 [debug] [Thread-1 (]: Began running node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m20:34:30.011273 [debug] [Thread-2 (]: Began running node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m20:34:30.011712 [debug] [Thread-3 (]: Began running node test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43
+[0m20:34:30.012450 [debug] [Thread-4 (]: Began running node test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea
+[0m20:34:30.012126 [info ] [Thread-1 (]: 1 of 18 START test accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA  [RUN]
+[0m20:34:30.013249 [info ] [Thread-2 (]: 2 of 18 START test accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV  [RUN]
+[0m20:34:30.013993 [info ] [Thread-3 (]: 3 of 18 START test not_null_dim_posto_sk_posto ................................. [RUN]
+[0m20:34:30.014656 [info ] [Thread-4 (]: 4 of 18 START test not_null_dim_produto_sk_produto ............................. [RUN]
+[0m20:34:30.015465 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_anp_fuel_public, now test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a)
+[0m20:34:30.016325 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999'
+[0m20:34:30.017133 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43'
+[0m20:34:30.018065 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea'
+[0m20:34:30.019028 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m20:34:30.019875 [debug] [Thread-2 (]: Began compiling node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m20:34:30.020590 [debug] [Thread-3 (]: Began compiling node test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43
+[0m20:34:30.021317 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea
+[0m20:34:30.058688 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a"
+[0m20:34:30.061275 [debug] [Thread-2 (]: Writing injected SQL for node "test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999"
+[0m20:34:30.071178 [debug] [Thread-3 (]: Writing injected SQL for node "test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43"
+[0m20:34:30.078045 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea"
+[0m20:34:30.092595 [debug] [Thread-3 (]: Began executing node test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43
+[0m20:34:30.109670 [debug] [Thread-1 (]: Began executing node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m20:34:30.110225 [debug] [Thread-4 (]: Began executing node test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea
+[0m20:34:30.109187 [debug] [Thread-3 (]: Writing runtime sql for node "test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43"
+[0m20:34:30.112297 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a"
+[0m20:34:30.112752 [debug] [Thread-2 (]: Began executing node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m20:34:30.114407 [debug] [Thread-4 (]: Writing runtime sql for node "test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea"
+[0m20:34:30.118248 [debug] [Thread-2 (]: Writing runtime sql for node "test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999"
+[0m20:34:30.131882 [debug] [Thread-4 (]: Using postgres connection "test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea"
+[0m20:34:30.132552 [debug] [Thread-3 (]: Using postgres connection "test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43"
+[0m20:34:30.133026 [debug] [Thread-2 (]: Using postgres connection "test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999"
+[0m20:34:30.133451 [debug] [Thread-4 (]: On test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select sk_produto
+from "anp_fuel"."public"."dim_produto"
+where sk_produto is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.134126 [debug] [Thread-3 (]: On test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select sk_posto
+from "anp_fuel"."public"."dim_posto"
+where sk_posto is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.134703 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a"
+[0m20:34:30.135076 [debug] [Thread-2 (]: On test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        produto as value_field,
+        count(*) as n_records
+
+    from "anp_fuel"."public"."stg_precos"
+    group by produto
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'GASOLINA','GASOLINA ADITIVADA','ETANOL','DIESEL','DIESEL S10','GNV'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.135789 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m20:34:30.136709 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m20:34:30.137686 [debug] [Thread-1 (]: On test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        combustivel_vantajoso as value_field,
+        count(*) as n_records
+
+    from "anp_fuel"."public"."gold_etanol_vs_gasolina"
+    group by combustivel_vantajoso
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'ETANOL','GASOLINA'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.138490 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m20:34:30.140282 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:30.145189 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m20:34:30.149947 [debug] [Thread-4 (]: On test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea: ROLLBACK
+[0m20:34:30.150837 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m20:34:30.151675 [debug] [Thread-4 (]: On test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea: Close
+[0m20:34:30.153060 [debug] [Thread-3 (]: On test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43: ROLLBACK
+[0m20:34:30.153514 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.013 seconds
+[0m20:34:30.154388 [info ] [Thread-4 (]: 4 of 18 PASS not_null_dim_produto_sk_produto ................................... [[32mPASS[0m in 0.14s]
+[0m20:34:30.154933 [debug] [Thread-3 (]: On test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43: Close
+[0m20:34:30.156225 [debug] [Thread-1 (]: On test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a: ROLLBACK
+[0m20:34:30.157261 [debug] [Thread-4 (]: Finished running node test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea
+[0m20:34:30.158673 [info ] [Thread-3 (]: 3 of 18 PASS not_null_dim_posto_sk_posto ....................................... [[32mPASS[0m in 0.14s]
+[0m20:34:30.159453 [debug] [Thread-1 (]: On test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a: Close
+[0m20:34:30.160039 [debug] [Thread-4 (]: Began running node test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98
+[0m20:34:30.161196 [debug] [Thread-3 (]: Finished running node test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43
+[0m20:34:30.162333 [info ] [Thread-1 (]: 1 of 18 PASS accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA  [[32mPASS[0m in 0.15s]
+[0m20:34:30.162681 [info ] [Thread-4 (]: 5 of 18 START test not_null_dim_tempo_sk_tempo ................................. [RUN]
+[0m20:34:30.163691 [debug] [Thread-3 (]: Began running node test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00
+[0m20:34:30.164876 [debug] [Thread-1 (]: Finished running node test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a
+[0m20:34:30.165703 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_dim_produto_sk_produto.88ed3c03ea, now test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98)
+[0m20:34:30.166439 [info ] [Thread-3 (]: 6 of 18 START test not_null_fato_coleta_valor_venda ............................ [RUN]
+[0m20:34:30.167239 [debug] [Thread-1 (]: Began running node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m20:34:30.167933 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98
+[0m20:34:30.168657 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_dim_posto_sk_posto.613507cf43, now test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00)
+[0m20:34:30.169270 [info ] [Thread-1 (]: 7 of 18 START test not_null_gold_etanol_vs_gasolina_combustivel_vantajoso ...... [RUN]
+[0m20:34:30.175820 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98"
+[0m20:34:30.176706 [debug] [Thread-3 (]: Began compiling node test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00
+[0m20:34:30.177461 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.accepted_values_gold_etanol_vs_gasolina_combustivel_vantajoso__ETANOL__GASOLINA.b3bf56149a, now test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25)
+[0m20:34:30.185629 [debug] [Thread-3 (]: Writing injected SQL for node "test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00"
+[0m20:34:30.186179 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m20:34:30.195345 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25"
+[0m20:34:30.206068 [debug] [Thread-4 (]: Began executing node test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98
+[0m20:34:30.211912 [debug] [Thread-4 (]: Writing runtime sql for node "test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98"
+[0m20:34:30.217246 [debug] [Thread-3 (]: Began executing node test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00
+[0m20:34:30.222369 [debug] [Thread-3 (]: Writing runtime sql for node "test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00"
+[0m20:34:30.226002 [debug] [Thread-1 (]: Began executing node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m20:34:30.230485 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25"
+[0m20:34:30.246179 [debug] [Thread-3 (]: Using postgres connection "test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00"
+[0m20:34:30.246842 [debug] [Thread-4 (]: Using postgres connection "test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98"
+[0m20:34:30.247452 [debug] [Thread-3 (]: On test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select valor_venda
+from "anp_fuel"."public"."fato_coleta"
+where valor_venda is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.248638 [debug] [Thread-4 (]: On test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select sk_tempo
+from "anp_fuel"."public"."dim_tempo"
+where sk_tempo is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.249434 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:34:30.250218 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:34:30.252835 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25"
+[0m20:34:30.253656 [debug] [Thread-1 (]: On test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select combustivel_vantajoso
+from "anp_fuel"."public"."gold_etanol_vs_gasolina"
+where combustivel_vantajoso is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.254715 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:30.259710 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m20:34:30.262969 [debug] [Thread-4 (]: On test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98: ROLLBACK
+[0m20:34:30.263657 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m20:34:30.264480 [debug] [Thread-4 (]: On test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98: Close
+[0m20:34:30.266006 [debug] [Thread-1 (]: On test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25: ROLLBACK
+[0m20:34:30.267614 [info ] [Thread-4 (]: 5 of 18 PASS not_null_dim_tempo_sk_tempo ....................................... [[32mPASS[0m in 0.10s]
+[0m20:34:30.268818 [debug] [Thread-1 (]: On test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25: Close
+[0m20:34:30.269814 [debug] [Thread-4 (]: Finished running node test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98
+[0m20:34:30.272155 [debug] [Thread-4 (]: Began running node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m20:34:30.271489 [info ] [Thread-1 (]: 7 of 18 PASS not_null_gold_etanol_vs_gasolina_combustivel_vantajoso ............ [[32mPASS[0m in 0.09s]
+[0m20:34:30.272975 [info ] [Thread-4 (]: 8 of 18 START test not_null_gold_preco_mensal_uf_preco_medio ................... [RUN]
+[0m20:34:30.273933 [debug] [Thread-1 (]: Finished running node test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25
+[0m20:34:30.274779 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_dim_tempo_sk_tempo.a5f54edc98, now test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b)
+[0m20:34:30.275838 [debug] [Thread-1 (]: Began running node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m20:34:30.276909 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m20:34:30.277775 [info ] [Thread-1 (]: 9 of 18 START test not_null_gold_variacao_mensal_preco_medio ................... [RUN]
+[0m20:34:30.286379 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b"
+[0m20:34:30.287089 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_gold_etanol_vs_gasolina_combustivel_vantajoso.cfb6675f25, now test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b)
+[0m20:34:30.289880 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m20:34:30.313322 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b"
+[0m20:34:30.341999 [debug] [Thread-4 (]: Began executing node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m20:34:30.354921 [debug] [Thread-4 (]: Writing runtime sql for node "test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b"
+[0m20:34:30.362999 [debug] [Thread-1 (]: Began executing node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m20:34:30.372059 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b"
+[0m20:34:30.391140 [debug] [Thread-4 (]: Using postgres connection "test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b"
+[0m20:34:30.408113 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b"
+[0m20:34:30.410018 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.271 seconds
+[0m20:34:30.422910 [debug] [Thread-4 (]: On test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select preco_medio
+from "anp_fuel"."public"."gold_preco_mensal_uf"
+where preco_medio is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.425367 [debug] [Thread-1 (]: On test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select preco_medio
+from "anp_fuel"."public"."gold_variacao_mensal"
+where preco_medio is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.432776 [debug] [Thread-2 (]: On test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999: ROLLBACK
+[0m20:34:30.436345 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:34:30.438255 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:30.439691 [debug] [Thread-2 (]: On test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999: Close
+[0m20:34:30.443071 [info ] [Thread-2 (]: 2 of 18 PASS accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV  [[32mPASS[0m in 0.43s]
+[0m20:34:30.445220 [debug] [Thread-2 (]: Finished running node test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999
+[0m20:34:30.446185 [debug] [Thread-2 (]: Began running node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m20:34:30.447056 [info ] [Thread-2 (]: 10 of 18 START test not_null_stg_precos_produto ................................ [RUN]
+[0m20:34:30.448007 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.anp_fuel.accepted_values_stg_precos_produto__GASOLINA__GASOLINA_ADITIVADA__ETANOL__DIESEL__DIESEL_S10__GNV.2f04d79999, now test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6)
+[0m20:34:30.458135 [debug] [Thread-2 (]: Began compiling node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m20:34:30.484690 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.048 seconds
+[0m20:34:30.487959 [debug] [Thread-2 (]: Writing injected SQL for node "test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6"
+[0m20:34:30.491139 [debug] [Thread-4 (]: On test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b: ROLLBACK
+[0m20:34:30.492074 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.054 seconds
+[0m20:34:30.497244 [debug] [Thread-4 (]: On test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b: Close
+[0m20:34:30.503314 [debug] [Thread-1 (]: On test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b: ROLLBACK
+[0m20:34:30.511487 [info ] [Thread-4 (]: 8 of 18 PASS not_null_gold_preco_mensal_uf_preco_medio ......................... [[32mPASS[0m in 0.24s]
+[0m20:34:30.516164 [debug] [Thread-1 (]: On test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b: Close
+[0m20:34:30.519449 [debug] [Thread-4 (]: Finished running node test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b
+[0m20:34:30.522947 [debug] [Thread-4 (]: Began running node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m20:34:30.522214 [info ] [Thread-1 (]: 9 of 18 PASS not_null_gold_variacao_mensal_preco_medio ......................... [[32mPASS[0m in 0.23s]
+[0m20:34:30.523663 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.274 seconds
+[0m20:34:30.524213 [info ] [Thread-4 (]: 11 of 18 START test not_null_stg_precos_uf ..................................... [RUN]
+[0m20:34:30.525826 [debug] [Thread-1 (]: Finished running node test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b
+[0m20:34:30.528179 [debug] [Thread-3 (]: On test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00: ROLLBACK
+[0m20:34:30.529140 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_gold_preco_mensal_uf_preco_medio.a5219cbe6b, now test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13)
+[0m20:34:30.530227 [debug] [Thread-1 (]: Began running node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m20:34:30.531190 [debug] [Thread-3 (]: On test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00: Close
+[0m20:34:30.531551 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m20:34:30.532521 [info ] [Thread-1 (]: 12 of 18 START test not_null_stg_precos_valor_venda ............................ [RUN]
+[0m20:34:30.541108 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13"
+[0m20:34:30.533738 [info ] [Thread-3 (]: 6 of 18 PASS not_null_fato_coleta_valor_venda .................................. [[32mPASS[0m in 0.37s]
+[0m20:34:30.541803 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_gold_variacao_mensal_preco_medio.81b40edf2b, now test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd)
+[0m20:34:30.543146 [debug] [Thread-3 (]: Finished running node test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00
+[0m20:34:30.543894 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m20:34:30.544709 [debug] [Thread-3 (]: Began running node test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87
+[0m20:34:30.551195 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd"
+[0m20:34:30.551699 [info ] [Thread-3 (]: 13 of 18 START test relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_  [RUN]
+[0m20:34:30.553246 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_fato_coleta_valor_venda.66f9b1af00, now test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87)
+[0m20:34:30.553889 [debug] [Thread-4 (]: Began executing node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m20:34:30.554428 [debug] [Thread-3 (]: Began compiling node test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87
+[0m20:34:30.556596 [debug] [Thread-4 (]: Writing runtime sql for node "test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13"
+[0m20:34:30.571018 [debug] [Thread-3 (]: Writing injected SQL for node "test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87"
+[0m20:34:30.590267 [debug] [Thread-2 (]: Began executing node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m20:34:30.592850 [debug] [Thread-2 (]: Writing runtime sql for node "test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6"
+[0m20:34:30.594149 [debug] [Thread-3 (]: Began executing node test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87
+[0m20:34:30.595113 [debug] [Thread-4 (]: Using postgres connection "test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13"
+[0m20:34:30.595889 [debug] [Thread-1 (]: Began executing node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m20:34:30.598963 [debug] [Thread-3 (]: Writing runtime sql for node "test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87"
+[0m20:34:30.600020 [debug] [Thread-4 (]: On test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select uf
+from "anp_fuel"."public"."stg_precos"
+where uf is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.602501 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd"
+[0m20:34:30.604088 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:34:30.612073 [debug] [Thread-2 (]: Using postgres connection "test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6"
+[0m20:34:30.613141 [debug] [Thread-2 (]: On test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select produto
+from "anp_fuel"."public"."stg_precos"
+where produto is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.614129 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:34:30.616728 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd"
+[0m20:34:30.617968 [debug] [Thread-3 (]: Using postgres connection "test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87"
+[0m20:34:30.618924 [debug] [Thread-1 (]: On test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select valor_venda
+from "anp_fuel"."public"."stg_precos"
+where valor_venda is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.620076 [debug] [Thread-3 (]: On test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select sk_posto as from_field
+    from "anp_fuel"."public"."fato_coleta"
+    where sk_posto is not null
+),
+
+parent as (
+    select sk_posto as to_field
+    from "anp_fuel"."public"."dim_posto"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.620885 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:30.621631 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:34:30.744135 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.140 seconds
+[0m20:34:30.746896 [debug] [Thread-4 (]: On test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13: ROLLBACK
+[0m20:34:30.748768 [debug] [Thread-4 (]: On test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13: Close
+[0m20:34:30.750294 [info ] [Thread-4 (]: 11 of 18 PASS not_null_stg_precos_uf ........................................... [[32mPASS[0m in 0.22s]
+[0m20:34:30.751458 [debug] [Thread-4 (]: Finished running node test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13
+[0m20:34:30.752330 [debug] [Thread-4 (]: Began running node test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3
+[0m20:34:30.753118 [info ] [Thread-4 (]: 14 of 18 START test relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_  [RUN]
+[0m20:34:30.754051 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_stg_precos_uf.7d9bba4b13, now test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3)
+[0m20:34:30.755200 [debug] [Thread-4 (]: Began compiling node test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3
+[0m20:34:30.775108 [debug] [Thread-4 (]: Writing injected SQL for node "test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3"
+[0m20:34:30.776393 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.162 seconds
+[0m20:34:30.778846 [debug] [Thread-2 (]: On test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6: ROLLBACK
+[0m20:34:30.780039 [debug] [Thread-2 (]: On test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6: Close
+[0m20:34:30.781022 [info ] [Thread-2 (]: 10 of 18 PASS not_null_stg_precos_produto ...................................... [[32mPASS[0m in 0.33s]
+[0m20:34:30.782034 [debug] [Thread-2 (]: Finished running node test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6
+[0m20:34:30.783427 [debug] [Thread-2 (]: Began running node test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c
+[0m20:34:30.784788 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.164 seconds
+[0m20:34:30.784406 [info ] [Thread-2 (]: 15 of 18 START test relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_  [RUN]
+[0m20:34:30.786615 [debug] [Thread-1 (]: On test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd: ROLLBACK
+[0m20:34:30.787435 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_stg_precos_produto.0e50f38ba6, now test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c)
+[0m20:34:30.788284 [debug] [Thread-1 (]: On test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd: Close
+[0m20:34:30.788645 [debug] [Thread-2 (]: Began compiling node test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c
+[0m20:34:30.790003 [info ] [Thread-1 (]: 12 of 18 PASS not_null_stg_precos_valor_venda .................................. [[32mPASS[0m in 0.25s]
+[0m20:34:30.801921 [debug] [Thread-1 (]: Finished running node test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd
+[0m20:34:30.805054 [debug] [Thread-2 (]: Writing injected SQL for node "test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c"
+[0m20:34:30.805706 [debug] [Thread-1 (]: Began running node test.anp_fuel.unique_dim_posto_sk_posto.b253860275
+[0m20:34:30.806604 [debug] [Thread-4 (]: Began executing node test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3
+[0m20:34:30.807597 [info ] [Thread-1 (]: 16 of 18 START test unique_dim_posto_sk_posto .................................. [RUN]
+[0m20:34:30.809664 [debug] [Thread-4 (]: Writing runtime sql for node "test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3"
+[0m20:34:30.810843 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.not_null_stg_precos_valor_venda.a79f0a5abd, now test.anp_fuel.unique_dim_posto_sk_posto.b253860275)
+[0m20:34:30.812140 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.unique_dim_posto_sk_posto.b253860275
+[0m20:34:30.821399 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.unique_dim_posto_sk_posto.b253860275"
+[0m20:34:30.823263 [debug] [Thread-2 (]: Began executing node test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c
+[0m20:34:30.826850 [debug] [Thread-2 (]: Writing runtime sql for node "test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c"
+[0m20:34:30.830611 [debug] [Thread-4 (]: Using postgres connection "test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3"
+[0m20:34:30.832487 [debug] [Thread-4 (]: On test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select sk_produto as from_field
+    from "anp_fuel"."public"."fato_coleta"
+    where sk_produto is not null
+),
+
+parent as (
+    select sk_produto as to_field
+    from "anp_fuel"."public"."dim_produto"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.833622 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:34:30.835713 [debug] [Thread-1 (]: Began executing node test.anp_fuel.unique_dim_posto_sk_posto.b253860275
+[0m20:34:30.839249 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.unique_dim_posto_sk_posto.b253860275"
+[0m20:34:30.841904 [debug] [Thread-2 (]: Using postgres connection "test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c"
+[0m20:34:30.843030 [debug] [Thread-2 (]: On test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select sk_tempo as from_field
+    from "anp_fuel"."public"."fato_coleta"
+    where sk_tempo is not null
+),
+
+parent as (
+    select sk_tempo as to_field
+    from "anp_fuel"."public"."dim_tempo"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.843970 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:34:30.856508 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.unique_dim_posto_sk_posto.b253860275"
+[0m20:34:30.858105 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_posto_sk_posto.b253860275: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.unique_dim_posto_sk_posto.b253860275"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    sk_posto as unique_field,
+    count(*) as n_records
+
+from "anp_fuel"."public"."dim_posto"
+where sk_posto is not null
+group by sk_posto
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.860216 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:30.881020 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.021 seconds
+[0m20:34:30.883876 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_posto_sk_posto.b253860275: ROLLBACK
+[0m20:34:30.885018 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_posto_sk_posto.b253860275: Close
+[0m20:34:30.886810 [info ] [Thread-1 (]: 16 of 18 PASS unique_dim_posto_sk_posto ........................................ [[32mPASS[0m in 0.08s]
+[0m20:34:30.888895 [debug] [Thread-1 (]: Finished running node test.anp_fuel.unique_dim_posto_sk_posto.b253860275
+[0m20:34:30.890160 [debug] [Thread-1 (]: Began running node test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae
+[0m20:34:30.891221 [info ] [Thread-1 (]: 17 of 18 START test unique_dim_produto_sk_produto .............................. [RUN]
+[0m20:34:30.892256 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.unique_dim_posto_sk_posto.b253860275, now test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae)
+[0m20:34:30.893091 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae
+[0m20:34:30.902742 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae"
+[0m20:34:30.926448 [debug] [Thread-1 (]: Began executing node test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae
+[0m20:34:30.930251 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae"
+[0m20:34:30.950486 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae"
+[0m20:34:30.951752 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    sk_produto as unique_field,
+    count(*) as n_records
+
+from "anp_fuel"."public"."dim_produto"
+where sk_produto is not null
+group by sk_produto
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:30.952739 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:30.962429 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m20:34:30.965971 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae: ROLLBACK
+[0m20:34:30.967713 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae: Close
+[0m20:34:30.969050 [info ] [Thread-1 (]: 17 of 18 PASS unique_dim_produto_sk_produto .................................... [[32mPASS[0m in 0.08s]
+[0m20:34:30.971014 [debug] [Thread-1 (]: Finished running node test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae
+[0m20:34:30.972179 [debug] [Thread-1 (]: Began running node test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3
+[0m20:34:30.973228 [info ] [Thread-1 (]: 18 of 18 START test unique_dim_tempo_sk_tempo .................................. [RUN]
+[0m20:34:30.974237 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.anp_fuel.unique_dim_produto_sk_produto.51f0cbc5ae, now test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3)
+[0m20:34:30.975021 [debug] [Thread-1 (]: Began compiling node test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3
+[0m20:34:30.982863 [debug] [Thread-1 (]: Writing injected SQL for node "test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3"
+[0m20:34:31.006045 [debug] [Thread-1 (]: Began executing node test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3
+[0m20:34:31.009164 [debug] [Thread-1 (]: Writing runtime sql for node "test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3"
+[0m20:34:31.029512 [debug] [Thread-1 (]: Using postgres connection "test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3"
+[0m20:34:31.030879 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3: /* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "anp_fuel", "target_name": "docker", "node_id": "test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    sk_tempo as unique_field,
+    count(*) as n_records
+
+from "anp_fuel"."public"."dim_tempo"
+where sk_tempo is not null
+group by sk_tempo
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m20:34:31.031859 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:34:31.041567 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m20:34:31.044075 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3: ROLLBACK
+[0m20:34:31.045246 [debug] [Thread-1 (]: On test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3: Close
+[0m20:34:31.047272 [info ] [Thread-1 (]: 18 of 18 PASS unique_dim_tempo_sk_tempo ........................................ [[32mPASS[0m in 0.07s]
+[0m20:34:31.049015 [debug] [Thread-1 (]: Finished running node test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3
+[0m20:34:31.097761 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.264 seconds
+[0m20:34:31.100118 [debug] [Thread-4 (]: On test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3: ROLLBACK
+[0m20:34:31.101175 [debug] [Thread-4 (]: On test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3: Close
+[0m20:34:31.103038 [info ] [Thread-4 (]: 14 of 18 PASS relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_  [[32mPASS[0m in 0.35s]
+[0m20:34:31.103707 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.260 seconds
+[0m20:34:31.104147 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.482 seconds
+[0m20:34:31.104747 [debug] [Thread-4 (]: Finished running node test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3
+[0m20:34:31.106602 [debug] [Thread-2 (]: On test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c: ROLLBACK
+[0m20:34:31.108589 [debug] [Thread-3 (]: On test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87: ROLLBACK
+[0m20:34:31.110262 [debug] [Thread-2 (]: On test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c: Close
+[0m20:34:31.110880 [debug] [Thread-3 (]: On test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87: Close
+[0m20:34:31.111691 [info ] [Thread-2 (]: 15 of 18 PASS relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_ ..... [[32mPASS[0m in 0.32s]
+[0m20:34:31.113182 [debug] [Thread-2 (]: Finished running node test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c
+[0m20:34:31.112611 [info ] [Thread-3 (]: 13 of 18 PASS relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_ ..... [[32mPASS[0m in 0.56s]
+[0m20:34:31.114397 [debug] [Thread-3 (]: Finished running node test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87
+[0m20:34:31.116798 [debug] [MainThread]: On master: COMMIT
+[0m20:34:31.117724 [debug] [MainThread]: Using postgres connection "master"
+[0m20:34:31.118436 [debug] [MainThread]: On master: COMMIT
+[0m20:34:31.118994 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:34:31.124075 [debug] [MainThread]: SQL status: COMMIT in 0.005 seconds
+[0m20:34:31.124946 [debug] [MainThread]: On master: Close
+[0m20:34:31.125782 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:34:31.126359 [debug] [MainThread]: Connection 'test.anp_fuel.unique_dim_tempo_sk_tempo.2def1c13e3' was properly closed.
+[0m20:34:31.126909 [debug] [MainThread]: Connection 'test.anp_fuel.relationships_fato_coleta_sk_tempo__sk_tempo__ref_dim_tempo_.18aa8f3a2c' was properly closed.
+[0m20:34:31.127444 [debug] [MainThread]: Connection 'test.anp_fuel.relationships_fato_coleta_sk_posto__sk_posto__ref_dim_posto_.499ab3be87' was properly closed.
+[0m20:34:31.128025 [debug] [MainThread]: Connection 'test.anp_fuel.relationships_fato_coleta_sk_produto__sk_produto__ref_dim_produto_.0f3be5f1f3' was properly closed.
+[0m20:34:31.128756 [info ] [MainThread]: 
+[0m20:34:31.129604 [info ] [MainThread]: Finished running 18 data tests in 0 hours 0 minutes and 1.26 seconds (1.26s).
+[0m20:34:31.132384 [debug] [MainThread]: Command end result
+[0m20:34:31.204014 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/project/dbt/target/manifest.json
+[0m20:34:31.210691 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/project/dbt/target/semantic_manifest.json
+[0m20:34:31.219380 [debug] [MainThread]: Wrote artifact OsiDocument to /opt/airflow/project/dbt/target/osi_document.json
+[0m20:34:31.233134 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/project/dbt/target/run_results.json
+[0m20:34:31.234155 [info ] [MainThread]: 
+[0m20:34:31.235027 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:34:31.235729 [info ] [MainThread]: 
+[0m20:34:31.236418 [info ] [MainThread]: Done. PASS=18 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=18
+[0m20:34:31.237822 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 2.492598, "process_in_blocks": "1555", "process_kernel_time": 0.349182, "process_mem_max_rss": "141452", "process_out_blocks": "0", "process_user_time": 3.102037}
+[0m20:34:31.238622 [debug] [MainThread]: Command `dbt test` succeeded at 20:34:31.238515 after 2.49 seconds
+[0m20:34:31.239286 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772ec19f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772b82e660>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a772cbfc3b0>]}
+[0m20:34:31.239918 [debug] [MainThread]: Flushing usage events
+[0m20:34:32.615024 [debug] [MainThread]: An error was encountered while trying to flush usage events
