@@ -3,8 +3,8 @@
 Pipeline de dados completo (ELT) que ingere a **Série Histórica de Preços de
 Combustíveis** da ANP (Agência Nacional do Petróleo), organiza os dados em
 **arquitetura medalhão** (Bronze → Silver → Gold), modela um **star schema**
-analítico via **dbt**, e orquestra toda a esteira com **Apache Airflow** —
-tudo containerizado com **Docker Compose**.
+analítico via **dbt**, aplica **carga incremental** e orquestra toda a
+esteira com **Apache Airflow** — tudo containerizado com **Docker Compose**.
 
 ![Arquitetura do pipeline anp-fuel](anp-fuel-architecture.svg)
 
@@ -13,17 +13,17 @@ tudo containerizado com **Docker Compose**.
 ```
 ANP (gov.br)
    │
-   │  extract.py          (download dos CSVs semestrais)
+   │  extract.py          (incremental: baixa só os semestres novos)
    ▼
 🥉 Bronze — data/bronze/precos_raw.parquet          [dado cru, fiel à fonte]
    │
-   │  transform.py        (limpeza, tipos, validações)
+   │  transform.py        (limpeza, tipos, deduplicação, validações)
    ▼
 🥈 Silver — data/silver/precos_tratado.parquet      [dado limpo e validado]
    │
-   │  load.py             (carga full idempotente)
+   │  load.py             (upsert: INSERT ... ON CONFLICT DO UPDATE)
    ▼
-🥈 Silver no PostgreSQL — precos_combustiveis       [~2,98M linhas]
+🥈 Silver no PostgreSQL — precos_combustiveis       [~3,4M linhas]
    │
    │  dbt run + dbt test  (modelagem analítica em SQL)
    ▼
@@ -34,6 +34,27 @@ ANP (gov.br)
   🌀 DAG anp_fuel_pipeline: load_silver → dbt_run → dbt_test
 ═══════════════════════════════════════════════════════════════════
 ```
+
+## 🔄 Carga incremental
+
+O pipeline não reprocessa o histórico inteiro a cada execução:
+
+- **`extract.py`** detecta o último `ano_ref`/`semestre_ref` presente no
+  Bronze e baixa apenas os períodos publicados depois dele, concatenando
+  com o que já existe.
+- **`transform.py`** deduplica pela chave de negócio
+  (`cnpj + produto + data_coleta`), consolidando por média os casos em que
+  a fonte reporta mais de uma amostragem para o mesmo posto/produto/dia.
+- **`load.py`** faz **upsert** (`INSERT ... ON CONFLICT DO UPDATE`) em vez
+  de `TRUNCATE` + `INSERT`: registros novos são inseridos, registros já
+  existentes têm o valor atualizado — sem duplicar e sem apagar a tabela
+  a cada rodada. A unicidade é garantida por uma constraint
+  (`uq_coleta`) criada de forma idempotente pelo próprio script.
+
+Resultado: rodar o pipeline com a ANP tendo publicado um novo semestre
+processa apenas o delta — validado em produção local processando +422 mil
+linhas novas em minutos, com a integridade confirmada pelos 18 testes do
+dbt logo em seguida.
 
 ## 📊 Camada Gold
 
@@ -53,7 +74,7 @@ qualquer combinação de perguntas (bandeira × trimestre × UF × produto) via
 JOIN, sem criar um mart novo a cada pergunta:
 
 - **`fato_coleta`** — grão: uma coleta de preço (posto × produto × data).
-  ~2,98M linhas.
+  ~3,4M linhas.
 - **`dim_posto`** — CNPJ, revenda, bandeira, UF, cidade, bairro (SCD tipo 1).
 - **`dim_produto`** — produto e unidade de medida.
 - **`dim_tempo`** — data, ano, mês, trimestre, semestre, dia da semana.
@@ -68,7 +89,7 @@ dimensões.
 - **pandas + pyarrow** — extração e transformação (camadas Bronze/Silver)
 - **Apache Parquet** — formato colunar das camadas de arquivo
 - **PostgreSQL 16** — data warehouse (containerizado)
-- **psycopg 3** — driver de conexão e carga
+- **psycopg 3** — driver de conexão, carga e upsert
 - **dbt (dbt-postgres + dbt_utils)** — modelagem, testes e documentação
 - **Docker Compose** — orquestração dos containers (Postgres + Airflow)
 - **Apache Airflow 3.0.1** — orquestração e agendamento do pipeline
@@ -79,9 +100,9 @@ dimensões.
 anp-fuel/
 ├── src/
 │   ├── setup_db.py          # cria o database (idempotente)
-│   ├── extract.py           # ANP → Bronze (parquet)
-│   ├── transform.py         # Bronze → Silver (limpeza + validações)
-│   └── load.py               # Silver → PostgreSQL
+│   ├── extract.py           # ANP → Bronze (incremental)
+│   ├── transform.py         # Bronze → Silver (limpeza + dedup + validações)
+│   └── load.py                # Silver → PostgreSQL (upsert)
 ├── dbt/
 │   ├── dbt_project.yml
 │   ├── packages.yml          # dbt_utils
@@ -130,14 +151,18 @@ docker exec -it anp_fuel_db psql -U postgres -c "CREATE DATABASE airflow_meta;"
 ### Pipeline — execução manual
 
 ```bash
-uv run python src/extract.py     # baixa os semestres da ANP → Bronze
-uv run python src/transform.py   # limpa e valida → Silver
-uv run python src/load.py        # carrega no PostgreSQL
+uv run python src/extract.py     # baixa apenas os semestres novos → Bronze
+uv run python src/transform.py   # limpa, deduplica e valida → Silver
+uv run python src/load.py        # upsert no PostgreSQL
 
 cd dbt
 uv run dbt run                   # materializa staging + gold + star schema
 uv run dbt test                  # valida a qualidade dos dados (18 testes)
 ```
+
+Rodar essa sequência novamente a qualquer momento é seguro: se não houver
+semestre novo publicado, o `extract.py` encerra sem baixar nada; se houver
+dados repetidos, o `load.py` apenas atualiza, nunca duplica.
 
 ### Pipeline — execução orquestrada (Airflow)
 
@@ -154,6 +179,10 @@ docker logs anp_fuel_airflow | grep -i password   # captura a senha do admin
 ```bash
 docker exec -it anp_fuel_db psql -U postgres -d anp_fuel \
   -c "SELECT COUNT(*) FROM precos_combustiveis;"
+
+# última data de coleta presente na série
+docker exec -it anp_fuel_db psql -U postgres -d anp_fuel \
+  -c "SELECT MAX(data_coleta), MAX(ano_ref), MAX(semestre_ref) FROM precos_combustiveis;"
 ```
 
 ## 🧠 Decisões técnicas
@@ -173,12 +202,23 @@ na fronteira de entrada — em vez de propagar dados inesperados até o banco.
 nulos em campos obrigatórios, preços não positivos, datas fora do intervalo
 da série (2004–hoje) e CNPJs malformados.
 
+**Deduplicação por chave de negócio.** A fonte ocasionalmente reporta mais
+de um preço para o mesmo posto/produto/dia (múltiplas amostragens na mesma
+semana). Em vez de escolher arbitrariamente uma linha, o `transform.py`
+consolida por média — mesma lógica de agregação já usada nos modelos Gold —
+e garante com um `assert` que a chave `cnpj + produto + data_coleta` fica
+única antes de seguir para a carga.
+
+**Carga incremental com upsert.** O `load.py` usa
+`INSERT ... ON CONFLICT (cnpj, produto, data_coleta) DO UPDATE`, apoiado em
+uma constraint `UNIQUE` criada de forma idempotente pelo próprio script.
+Isso torna o pipeline seguro para reexecução a qualquer momento: dado novo
+é inserido, dado já existente é atualizado, nada é duplicado — sem a
+necessidade de truncar a tabela a cada rodada.
+
 **psycopg 3 em vez de psycopg2.** Além de ser o sucessor oficial, o psycopg2
 no Windows com locale pt-BR mascara erros de conexão com `UnicodeDecodeError`
 ilegível — o psycopg 3 reporta os erros reais.
-
-**Carga full idempotente.** O `load.py` faz `TRUNCATE` + `INSERT`: executar
-o pipeline N vezes produz o mesmo estado final, sem duplicação.
 
 **ELT com dbt para a camada analítica.** As transformações Silver → Gold
 acontecem dentro do PostgreSQL, via SQL versionado no dbt — que resolve o
@@ -202,7 +242,8 @@ scheduler, que empacota as mesmas dependências via `Dockerfile.airflow`.
 (`load.py → dbt run → dbt test`) virou um DAG declarativo
 (`load_silver >> dbt_run >> dbt_test`), com retries, logs centralizados e
 disparo via interface web — a mesma lógica de grafo de dependências do dbt,
-um nível acima.
+um nível acima. A execução orquestrada foi validada processando um
+semestre novo de ponta a ponta em ~3 minutos e meio.
 
 **Ambientes por projeto com uv.** Cada dependência é declarada no
 `pyproject.toml` e instalada no `.venv` do projeto — reprodutível com um
@@ -217,7 +258,7 @@ em disco entre projetos.
       `dim_tempo`, `fato_coleta`
 - [x] PostgreSQL containerizado com Docker Compose
 - [x] Orquestração com Apache Airflow
-- [ ] Carga incremental (upsert com `ON CONFLICT` / dbt incremental)
+- [x] Carga incremental (dedup por chave de negócio + upsert + extração seletiva)
 - [ ] Agendamento automático do DAG (`schedule`)
 - [ ] Dashboard analítico (Metabase ou Streamlit)
 
