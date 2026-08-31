@@ -113,6 +113,32 @@ if cnpj_ruim > 0:
 print("✔ Validações concluídas sem erros.")
 
 # ------------------------------------------------------------------
+# 6.5 DEDUPLICAR PELA CHAVE DE NEGÓCIO (agregando por média)
+# ------------------------------------------------------------------
+# A fonte (ANP) ocasionalmente reporta mais de um preço para o mesmo
+# posto+produto+dia (ex.: duas amostragens na mesma semana). Como não há
+# timestamp de hora para desempatar, consolidamos por média — mesma lógica
+# de agregação já usada nos modelos Gold (AVG(valor_venda)).
+chave_negocio = ["cnpj", "produto", "data_coleta"]
+
+antes_dedup = len(df)
+duplicatas = df.duplicated(subset=chave_negocio, keep=False).sum()
+
+if duplicatas > 0:
+    print(
+        f"⚠ {duplicatas:,} linhas duplicadas na chave (cnpj+produto+data_coleta) — agregando por média..."
+    )
+    colunas_agrupar = [c for c in df.columns if c != "valor_venda"]
+    df = df.groupby(colunas_agrupar, as_index=False, dropna=False)["valor_venda"].mean()
+    print(f"  {antes_dedup - len(df):,} linhas consolidadas.")
+
+# Garantia: a chave de negócio deve ser única após a deduplicação
+restantes = df.duplicated(subset=chave_negocio).sum()
+assert (
+    restantes == 0
+), f"Ainda há {restantes} duplicatas na chave de negócio após deduplicação"
+
+# ------------------------------------------------------------------
 # 7. GRAVAR O SILVER
 # ------------------------------------------------------------------
 ARQUIVO_SILVER.parent.mkdir(parents=True, exist_ok=True)  # cria data/silver se faltar

@@ -1,10 +1,12 @@
 """
-load.py — Carga no PostgreSQL
-Lê o Parquet tratado (Silver) e carrega na tabela precos_combustiveis.
-Nenhuma regra de negócio/limpeza acontece aqui — apenas movimentação.
+load.py — Carga incremental no PostgreSQL
+Lê o Parquet tratado (Silver) e carrega na tabela precos_combustiveis via
+UPSERT (INSERT ... ON CONFLICT): linhas novas são inseridas, linhas já
+existentes (mesma chave de negócio) têm o valor atualizado — sem duplicar
+e sem precisar apagar a tabela a cada execução.
 
 Pré-requisitos:
-  - PostgreSQL rodando em localhost:5432
+  - PostgreSQL rodando (local ou container)
   - Database anp_fuel criado (CREATE DATABASE anp_fuel;)
   - transform.py executado (data/silver/precos_tratado.parquet existente)
 
@@ -73,13 +75,27 @@ cur.execute(
 )
 
 # ------------------------------------------------------------------
-# 4. LIMPAR A TABELA (carga full: o banco espelha o Silver a cada rodada)
+# 3.1 GARANTIR A CONSTRAINT DE UNICIDADE (idempotente)
 # ------------------------------------------------------------------
-cur.execute(f"TRUNCATE TABLE {TABELA};")
-print("Tabela truncada — iniciando a carga...")
+# Postgres não tem "ADD CONSTRAINT IF NOT EXISTS" nativo; o bloco DO abaixo
+# verifica no catálogo (pg_constraint) antes de criar, para o script poder
+# ser executado repetidas vezes sem erro (ex.: banco recriado do zero).
+cur.execute(
+    f"""
+    DO $$
+    BEGIN
+        IF NOT EXISTS (
+            SELECT 1 FROM pg_constraint WHERE conname = 'uq_coleta'
+        ) THEN
+            ALTER TABLE {TABELA}
+            ADD CONSTRAINT uq_coleta UNIQUE (cnpj, produto, data_coleta);
+        END IF;
+    END $$;
+    """
+)
 
 # ------------------------------------------------------------------
-# 5. PREPARAR OS DADOS E INSERIR EM LOTE
+# 4. PREPARAR OS DADOS E FAZER O UPSERT (INSERT ... ON CONFLICT)
 # ------------------------------------------------------------------
 cols_insert = [
     "revenda",
@@ -101,6 +117,8 @@ cols_insert = [
 # lista de tuplas puras, na MESMA ordem das colunas do INSERT
 registros = list(df[cols_insert].itertuples(index=False, name=None))
 
+print(f"Iniciando upsert de {len(registros):,} linhas...")
+
 cur.executemany(
     f"""
     INSERT INTO {TABELA}
@@ -108,16 +126,30 @@ cur.executemany(
          produto, data_coleta, valor_venda, unidade_medida,
          bandeira, ano_ref, semestre_ref)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (cnpj, produto, data_coleta) DO UPDATE SET
+        revenda        = EXCLUDED.revenda,
+        regiao         = EXCLUDED.regiao,
+        uf             = EXCLUDED.uf,
+        cidade         = EXCLUDED.cidade,
+        bairro         = EXCLUDED.bairro,
+        cep            = EXCLUDED.cep,
+        valor_venda    = EXCLUDED.valor_venda,
+        unidade_medida = EXCLUDED.unidade_medida,
+        bandeira       = EXCLUDED.bandeira,
+        ano_ref        = EXCLUDED.ano_ref,
+        semestre_ref   = EXCLUDED.semestre_ref
     """,
     registros,
 )
 
 # ------------------------------------------------------------------
-# 6. CONFIRMAR A TRANSAÇÃO E FECHAR
+# 5. CONFIRMAR A TRANSAÇÃO E FECHAR
 # ------------------------------------------------------------------
 conn.commit()
 cur.close()
 conn.close()
 
-print(f"✔ {len(registros):,} linhas inseridas em {TABELA}.")
+print(
+    f"✔ {len(registros):,} linhas processadas (inseridas ou atualizadas) em {TABELA}."
+)
 print("  Confira no banco: SELECT COUNT(*) FROM precos_combustiveis;")
