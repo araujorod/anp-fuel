@@ -1,0 +1,8 @@
+Campo	Valor
+Server Name	localhost,5433 (host e porta separados por vírgula, no mesmo campo)
+Authentication Type	Password (já está certo)
+User Name	postgres (ou o que estiver em DB_USER)
+Password	a senha do .env (ex.: 123456)
+Save Password	mantenha marcado, evita digitar toda vez
+Database Name	anp_fuel
+Connection Name	(aparece mais embaixo) sugestão: anp-fuel-docker

@@ -8,6 +8,7 @@ dependencies = [
     "databricks>=0.2",
     "dbt-postgres>=1.11.0",
     "pandas>=3.0.3",
+    "plotly>=7.0.0",
     "psycopg2-binary>=2.9.12",
     "psycopg[binary]>=3.3.4",
     "pyarrow>=25.0.0",
