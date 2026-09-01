@@ -3,8 +3,9 @@
 Pipeline de dados completo (ELT) que ingere a **Série Histórica de Preços de
 Combustíveis** da ANP (Agência Nacional do Petróleo), organiza os dados em
 **arquitetura medalhão** (Bronze → Silver → Gold), modela um **star schema**
-analítico via **dbt**, aplica **carga incremental** e orquestra toda a
-esteira com **Apache Airflow** — tudo containerizado com **Docker Compose**.
+analítico via **dbt**, aplica **carga incremental**, orquestra toda a
+esteira com **Apache Airflow** e disponibiliza um **dashboard interativo**
+em Streamlit — tudo containerizado com **Docker Compose**.
 
 ![Arquitetura do pipeline anp-fuel](anp-fuel-architecture.svg)
 
@@ -28,12 +29,35 @@ ANP (gov.br)
    │  dbt run + dbt test  (modelagem analítica em SQL)
    ▼
 🥇 Gold — 4 marts flat + Star Schema (dim/fato)     [prontos para consumo]
+   │
+   │  dashboard/app.py    (Streamlit + Plotly)
+   ▼
+📊 Painel interativo — http://localhost:8501
 
 ═══════════════════════════════════════════════════════════════════
   🐳 Docker Compose: PostgreSQL + Apache Airflow
   🌀 DAG anp_fuel_pipeline: load_silver → dbt_run → dbt_test
 ═══════════════════════════════════════════════════════════════════
 ```
+
+## 📊 Dashboard
+
+Painel interativo em Streamlit, consumindo diretamente as tabelas Gold do
+PostgreSQL — filtros de UF e produto, KPIs de preço médio/mín/máx, e 4
+visualizações:
+
+| Aba | Conteúdo |
+|---|---|
+| 📈 Evolução Mensal | Preço médio por produto ao longo do tempo (`gold_preco_mensal_uf`) |
+| 🏷️ Ranking de Bandeiras | Participação de mercado por UF (`gold_ranking_bandeiras`) |
+| ⚖️ Etanol × Gasolina | Regra dos 70% e % de meses em que o etanol compensou (`gold_etanol_vs_gasolina`) |
+| 📊 Variação (%) | Variação percentual mês a mês (`gold_variacao_mensal`) |
+
+```bash
+uv run streamlit run dashboard/app.py
+```
+
+Acesse em **http://localhost:8501**.
 
 ## 🔄 Carga incremental
 
@@ -51,12 +75,11 @@ O pipeline não reprocessa o histórico inteiro a cada execução:
   a cada rodada. A unicidade é garantida por uma constraint
   (`uq_coleta`) criada de forma idempotente pelo próprio script.
 
-Resultado: rodar o pipeline com a ANP tendo publicado um novo semestre
-processa apenas o delta — validado em produção local processando +422 mil
-linhas novas em minutos, com a integridade confirmada pelos 18 testes do
-dbt logo em seguida.
+Validado em produção local processando um semestre novo (+422 mil linhas)
+em minutos, com a integridade confirmada pelos 18 testes do dbt logo em
+seguida — inclusive via disparo orquestrado pelo Airflow.
 
-## 📊 Camada Gold
+## 📐 Camada Gold
 
 ### Marts flat
 
@@ -81,7 +104,8 @@ JOIN, sem criar um mart novo a cada pergunta:
 
 Chaves geradas via `dbt_utils.generate_surrogate_key`. Integridade
 referencial garantida por testes `relationships` entre a fato e as três
-dimensões.
+dimensões. Total de **18 testes automatizados** (`not_null`, `unique`,
+`accepted_values`, `relationships`).
 
 ## 🛠 Stack
 
@@ -93,6 +117,7 @@ dimensões.
 - **dbt (dbt-postgres + dbt_utils)** — modelagem, testes e documentação
 - **Docker Compose** — orquestração dos containers (Postgres + Airflow)
 - **Apache Airflow 3.0.1** — orquestração e agendamento do pipeline
+- **Streamlit + Plotly** — dashboard analítico interativo
 
 ## 📁 Estrutura do projeto
 
@@ -113,6 +138,8 @@ anp-fuel/
 │           └── dimensional/   # star schema (dim_*/fato_coleta)
 ├── dags/
 │   └── anp_fuel_dag.py       # DAG do Airflow
+├── dashboard/
+│   └── app.py                 # painel Streamlit
 ├── docker/
 │   ├── Dockerfile.airflow    # imagem Airflow + deps do pipeline
 │   ├── init-db.sql           # cria o database airflow_meta
@@ -174,6 +201,14 @@ docker logs anp_fuel_airflow | grep -i password   # captura a senha do admin
 2. Ative o DAG **`anp_fuel_pipeline`**
 3. Clique em **Trigger** para disparar `load_silver → dbt_run → dbt_test`
 
+### Dashboard
+
+```bash
+uv run streamlit run dashboard/app.py
+```
+
+Acesse em **http://localhost:8501** (requer o container do PostgreSQL de pé).
+
 ### Verificando os dados
 
 ```bash
@@ -184,6 +219,10 @@ docker exec -it anp_fuel_db psql -U postgres -d anp_fuel \
 docker exec -it anp_fuel_db psql -U postgres -d anp_fuel \
   -c "SELECT MAX(data_coleta), MAX(ano_ref), MAX(semestre_ref) FROM precos_combustiveis;"
 ```
+
+Para exploração visual do banco (fora do terminal), qualquer cliente
+PostgreSQL padrão conecta em `localhost:5433` com as credenciais do
+`.env` — pgAdmin, DBeaver, ou a extensão PostgreSQL do VS Code.
 
 ## 🧠 Decisões técnicas
 
@@ -245,6 +284,13 @@ disparo via interface web — a mesma lógica de grafo de dependências do dbt,
 um nível acima. A execução orquestrada foi validada processando um
 semestre novo de ponta a ponta em ~3 minutos e meio.
 
+**Dashboard consumindo Gold diretamente.** O Streamlit lê exclusivamente
+das tabelas Gold/star schema — nunca da Silver bruta — reforçando a
+arquitetura em camadas: a camada de apresentação depende de dado já
+modelado e testado, não de dado cru. Cache em duas camadas
+(`st.cache_resource` para a conexão, `st.cache_data` para queries) evita
+sobrecarregar o banco a cada interação do usuário.
+
 **Ambientes por projeto com uv.** Cada dependência é declarada no
 `pyproject.toml` e instalada no `.venv` do projeto — reprodutível com um
 `uv sync`. O cache global do uv (hard links) elimina o custo de duplicação
@@ -259,8 +305,8 @@ em disco entre projetos.
 - [x] PostgreSQL containerizado com Docker Compose
 - [x] Orquestração com Apache Airflow
 - [x] Carga incremental (dedup por chave de negócio + upsert + extração seletiva)
+- [x] Dashboard analítico interativo (Streamlit + Plotly)
 - [ ] Agendamento automático do DAG (`schedule`)
-- [ ] Dashboard analítico (Metabase ou Streamlit)
 
 ## 📚 Fonte dos dados
 
