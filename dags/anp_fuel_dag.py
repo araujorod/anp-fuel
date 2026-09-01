@@ -9,7 +9,8 @@ with DAG(
     dag_id="anp_fuel_pipeline",
     description="Pipeline ANP: carga Silver + modelagem dbt",
     start_date=datetime(2026, 1, 1),
-    schedule=None,  # sem agendamento por ora: disparo manual
+    # schedule=None,  # sem agendamento por ora: disparo manual
+    schedule="@monthly",  # <- antes: None
     catchup=False,
     default_args={"retries": 1},
 ) as dag:
