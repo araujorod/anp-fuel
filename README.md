@@ -199,7 +199,14 @@ docker logs anp_fuel_airflow | grep -i password   # captura a senha do admin
 
 1. Acesse **http://localhost:8080** (usuário `admin`)
 2. Ative o DAG **`anp_fuel_pipeline`**
-3. Clique em **Trigger** para disparar `load_silver → dbt_run → dbt_test`
+3. Clique em **Trigger** para disparar manualmente `load_silver → dbt_run → dbt_test`
+
+O DAG também roda **automaticamente** (`schedule="@monthly"`): com o
+Docker e o container `anp_fuel_airflow` de pé, o scheduler dispara o
+pipeline todo dia 1º de cada mês, sem intervenção manual. Como a ANP
+publica os dados semestralmente, a maioria das execuções mensais encontra
+"nada novo" e encerra em segundos — o `extract.py` é idempotente e não
+reprocessa nada quando não há período novo publicado.
 
 ### Dashboard
 
@@ -291,6 +298,15 @@ modelado e testado, não de dado cru. Cache em duas camadas
 (`st.cache_resource` para a conexão, `st.cache_data` para queries) evita
 sobrecarregar o banco a cada interação do usuário.
 
+**Agendamento mensal, não diário.** A ANP publica a série semestralmente,
+sem data fixa. Agendar o DAG com `schedule="@monthly"` equilibra dois
+extremos: rodar diariamente seria desperdício (a maior parte das execuções
+encontraria "nada novo"), enquanto tentar prever a data exata de publicação
+é inviável. Como o pipeline é idempotente em toda a esteira — o
+`extract.py` compara com o último período já baixado e o `load.py` faz
+upsert — as execuções "vazias" custam apenas alguns segundos de verificação,
+sem risco de duplicar ou reprocessar dado.
+
 **Ambientes por projeto com uv.** Cada dependência é declarada no
 `pyproject.toml` e instalada no `.venv` do projeto — reprodutível com um
 `uv sync`. O cache global do uv (hard links) elimina o custo de duplicação
@@ -306,7 +322,7 @@ em disco entre projetos.
 - [x] Orquestração com Apache Airflow
 - [x] Carga incremental (dedup por chave de negócio + upsert + extração seletiva)
 - [x] Dashboard analítico interativo (Streamlit + Plotly)
-- [ ] Agendamento automático do DAG (`schedule`)
+- [x] Agendamento automático do DAG (`schedule="@monthly"`)
 
 ## 📚 Fonte dos dados
 
